@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2010-05-24T22:35:56</date>
+  <millis>1274733356850</millis>
+  <sequence>0</sequence>
+  <logger>ros.game.pipemaniaclone</logger>
+  <level>INFO</level>
+  <class>ros.game.Main</class>
+  <method>init</method>
+  <thread>10</thread>
+  <message>init database</message>
+</record>
+<record>
+  <date>2010-05-24T22:35:58</date>
+  <millis>1274733358081</millis>
+  <sequence>1</sequence>
+  <logger>ros.game.pipemaniaclone</logger>
+  <level>INFO</level>
+  <class>ros.game.Main</class>
+  <method>init</method>
+  <thread>10</thread>
+  <message>init sound</message>
+</record>
+<record>
+  <date>2010-05-24T22:35:58</date>
+  <millis>1274733358154</millis>
+  <sequence>2</sequence>
+  <logger>ros.game.pipemaniaclone</logger>
+  <level>INFO</level>
+  <class>ros.game.Main</class>
+  <method>init</method>
+  <thread>10</thread>
+  <message>init midi</message>
+</record>
+<record>
+  <date>2010-05-24T22:35:58</date>
+  <millis>1274733358292</millis>
+  <sequence>3</sequence>
+  <logger>ros.game.pipemaniaclone</logger>
+  <level>INFO</level>
+  <class>ros.game.Main</class>
+  <method>init</method>
+  <thread>10</thread>
+  <message>init gamecore</message>
+</record>
+<record>
+  <date>2010-05-24T22:35:58</date>
+  <millis>1274733358585</millis>
+  <sequence>4</sequence>
+  <logger>ros.game.pipemaniaclone</logger>
+  <level>INFO</level>
+  <class>ros.game.Main</class>
+  <method>init</method>
+  <thread>10</thread>
+  <message>init input manager</message>
+</record>
+<record>
+  <date>2010-05-24T22:35:58</date>
+  <millis>1274733358602</millis>
+  <sequence>5</sequence>
+  <logger>ros.game.pipemaniaclone</logger>
+  <level>INFO</level>
+  <class>ros.game.Main</class>
+  <method>init</method>
+  <thread>10</thread>
+  <message>init resource manager</message>
+</record>
+<record>
+  <date>2010-05-24T22:35:58</date>
+  <millis>1274733358604</millis>
+  <sequence>6</sequence>
+  <logger>ros.game.pipemaniaclone</logger>
+  <level>INFO</level>
+  <class>ros.game.Main</class>
+  <method>init</method>
+  <thread>10</thread>
+  <message>init game states</message>
+</record>
+<record>
+  <date>2010-05-24T22:35:59</date>
+  <millis>1274733359017</millis>
+  <sequence>7</sequence>
+  <logger>ros.game.pipemaniaclone</logger>
+  <level>INFO</level>
+  <class>ros.game.Main$1</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>loading resources</message>
+</record>
+<record>
+  <date>2010-05-24T22:36:01</date>
+  <millis>1274733361036</millis>
+  <sequence>8</sequence>
+  <logger>ros.game.pipemaniaclone</logger>
+  <level>INFO</level>
+  <class>ros.game.Main$1</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>setting to Loading State</message>
+</record>
+<record>
+  <date>2010-05-24T22:36:02</date>
+  <millis>1274733362072</millis>
+  <sequence>9</sequence>
+  <logger>ros.game.pipemaniaclone</logger>
+  <level>INFO</level>
+  <class>ros.game.levels.Board</class>
+  <method>initForStartingLevel</method>
+  <thread>10</thread>
+  <message>EndTile: java.awt.Point[x=0,y=7]StartTile: java.awt.Point[x=9,y=2]</message>
+</record>
+<record>
+  <date>2010-05-24T22:36:59</date>
+  <millis>1274733419977</millis>
+  <sequence>10</sequence>
+  <logger>ros.game.pipemaniaclone</logger>
+  <level>INFO</level>
+  <class>ros.game.Main</class>
+  <method>stop</method>
+  <thread>10</thread>
+  <message>stopping game</message>
+</record>
+<record>
+  <date>2010-05-24T22:36:59</date>
+  <millis>1274733419978</millis>
+  <sequence>11</sequence>
+  <logger>ros.game.pipemaniaclone</logger>
+  <level>INFO</level>
+  <class>ros.game.Main</class>
+  <method>stop</method>
+  <thread>10</thread>
+  <message>closing midi player</message>
+</record>
+<record>
+  <date>2010-05-24T22:36:59</date>
+  <millis>1274733419998</millis>
+  <sequence>12</sequence>
+  <logger>ros.game.pipemaniaclone</logger>
+  <level>INFO</level>
+  <class>ros.game.Main</class>
+  <method>stop</method>
+  <thread>10</thread>
+  <message>closing sound manager</message>
+</record>
+</log>
