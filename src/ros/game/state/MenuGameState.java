@@ -116,7 +116,7 @@ public class MenuGameState implements GameState, ActionListener{
          buttonImage[2] = resourceManager.loadImage("menu/scores.png");
          buttonImage[3] = resourceManager.loadImage("menu/exit.png");
 
-         musica = resourceManager.loadSequence("sounds/loop1.MID");
+         musica = resourceManager.loadSequence("sounds/loop.MID");
          btnSound = resourceManager.loadSound("sounds/prize.wav");
     }
 
@@ -284,6 +284,7 @@ public class MenuGameState implements GameState, ActionListener{
         }
         else if (playAction.isPressed()) {
             sound.play(btnSound);
+            music.stop();
 
             configPanel.setVisible(false);
             top15Panel.setVisible(false);

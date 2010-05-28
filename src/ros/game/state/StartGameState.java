@@ -8,9 +8,11 @@ import java.awt.AlphaComposite;
 import java.awt.Composite;
 import java.awt.Container;
 import java.awt.Cursor;
+import javax.sound.midi.Sequence;
 import ros.game.impl.TileLoaderAndFactory;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import ros.game.sound.Sound;
 import ros.game.util.Utils;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -103,6 +105,11 @@ public class StartGameState implements GameState, ActionListener {
     private final DatabaseManager database;
     private Image baseBottoni_Tile;
 
+    private Sound lascia;
+    private Sound piazza;
+    private Sound ok;
+    private Sequence musica;
+
 
     /**
      * Va al prossimo livello
@@ -157,6 +164,8 @@ public class StartGameState implements GameState, ActionListener {
         goToNextLevel();
         
         done = false;
+
+        music.play(musica, true);
     }
     
     /**
@@ -224,6 +233,11 @@ public class StartGameState implements GameState, ActionListener {
             sfondi[i] = resourceManager.loadImage("sfondi/" + i + ".jpg");
         }
         tileGenerator.loadResources(resourceManager);
+
+        musica = resourceManager.loadSequence("sounds/loop1.MID");
+        lascia = resourceManager.loadSound("sounds/scarta.wav");
+        piazza = resourceManager.loadSound("sounds/place.wav");
+        ok = resourceManager.loadSound("sounds/prize.wav");
     }
 
     public void stop() {
@@ -438,6 +452,7 @@ public class StartGameState implements GameState, ActionListener {
         switch(currentSubState){
             case EXIT_GAME:
                 if(esciPauseLevelDialog.isPressed()){
+                    sound.play(ok);
                     pauseLevelDialog.setVisible(false);
                     briefingBar.setVisible(false);
                     stop();
@@ -451,11 +466,13 @@ public class StartGameState implements GameState, ActionListener {
                     currentSubState = StartGameState.IN_GAME_BRIEFING;
                     briefingBar.startTimer(timerAction, livelloCorrente-1);
                     //TODO suoni sound.play(btnSound);
+                    sound.play(ok);
                 }
                 break;
             case ACCELERATED_GAME:
                 if(timerAction.isPressed()){
                     board.startCasellaTimer(casellaFinitaAction, livelloCorrente-1, true);
+                    sound.play(ok);
                 }
                 if (casellaFinitaAction.isPressed()) { //passa all'altra Tile
                     casellaFinitaAction.reset();
@@ -482,20 +499,24 @@ public class StartGameState implements GameState, ActionListener {
                 else if(mouseClickAction.isPressed()){
                     board.sostituisciTileSePossibile(inputManager.getClikedMousePosition());
                     mouseClickAction.reset();
+                    sound.play(piazza);
                 }
                 else if(mouseClickAction2.isPressed()){
                     board.saltaTilePreviewCorrente();
                     mouseClickAction2.reset();
+                    sound.play(lascia);
                 }
                 else if(escPressAction.isPressed()){
                     currentSubState = StartGameState.EXIT_GAME;
                     buttonSpace.setVisible(false);
                     pauseLevelDialog.setVisible(true);
+                    sound.play(ok);
                 }
                 else if(invioPressAction.isPressed()){
                     currentSubState = StartGameState.ACCELERATED_GAME;
                     briefingBar.acceleraBiefringTimer();
                     buttonSpace.setVisible(false);
+                    sound.play(ok);
                 }
                 break;
             case IN_GAME_NOBRIEFING:
@@ -520,20 +541,24 @@ public class StartGameState implements GameState, ActionListener {
                 else if(mouseClickAction.isPressed()){
                     board.sostituisciTileSePossibile(inputManager.getClikedMousePosition());
                     mouseClickAction.reset();
+                    sound.play(piazza);
                 }
                 else if(mouseClickAction2.isPressed()){
                     board.saltaTilePreviewCorrente();
                     mouseClickAction2.reset();
+                    sound.play(lascia);
                 }
                 else if(escPressAction.isPressed()){
                     currentSubState = StartGameState.EXIT_GAME;
                     buttonSpace.setVisible(false);
                     pauseLevelDialog.setVisible(true);
+                    sound.play(ok);
                 }
                 else if(invioPressAction.isPressed()){
                     currentSubState = StartGameState.ACCELERATED_GAME;   
                     board.acceleraTimerCasella();
                     buttonSpace.setVisible(false);
+                    sound.play(ok);
                 }
                 break;
             case SHOW_FINISH_LEVEL:
@@ -541,6 +566,7 @@ public class StartGameState implements GameState, ActionListener {
                     if(livelloCorrente < 30){
                         //vai al prossimo livello
                         livelloFinitoDialog.setVisible(false);
+
                         this.goToNextLevel();
                     }
                     else{
@@ -548,6 +574,7 @@ public class StartGameState implements GameState, ActionListener {
                         currentSubState = StartGameState.STORE_GAME_SCORE;
                         storePointsLevelDialog.setVisible(true);
                     }
+                    sound.play(ok);
                 }
                 break;
             case SHOW_GAME_OVER:
@@ -555,6 +582,7 @@ public class StartGameState implements GameState, ActionListener {
                     gameOverLevelDialog.setVisible(false);
                     currentSubState = StartGameState.STORE_GAME_SCORE;
                     storePointsLevelDialog.setVisible(true);
+                    sound.play(ok);
                 }
                 break;
             case STORE_GAME_SCORE:
@@ -562,6 +590,7 @@ public class StartGameState implements GameState, ActionListener {
                     storePointsLevelDialog.setVisible(false);
                     briefingBar.setVisible(false);
                     database.insertRecord(storePointsLevelDialog.getPlayerName(), punteggio, livelloCorrente);
+                    sound.play(ok);
                     stop();
                 }
                 break;
