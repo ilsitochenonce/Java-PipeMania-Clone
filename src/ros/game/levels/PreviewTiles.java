@@ -7,10 +7,10 @@ package ros.game.levels;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.LinkedList;
-import ros.game.impl.TileLoaderAndFactory;
+import ros.game.tiles.TileLoaderAndFactory;
 import java.util.Random;
 import java.util.Vector;
-import ros.game.impl.Tile;
+import ros.game.tiles.Tile;
 
 /**
  *
@@ -58,9 +58,9 @@ public class PreviewTiles implements AnteprimaTile {
         posizione = new Point(Board.BOARD_BASEX + (Board.COLONNE*Board.TILE_SIZEX)+30,Board.BOARD_BASEY);
     }
 
-    public synchronized void draw(Graphics2D g, int t) {
+    public synchronized void draw(Graphics2D g) {
         for(int i=0;i<NUMTILES;i++){
-            tiles.get(i).draw(g, t, posizione.x, posizione.y +(i*Board.TILE_SIZEY) + (i*SPACE) + 100, false);
+            tiles.get(i).draw(g, posizione.x, posizione.y +(i*Board.TILE_SIZEY) + (i*SPACE) + 100, false,0);
         }
     }
 
@@ -143,7 +143,7 @@ public class PreviewTiles implements AnteprimaTile {
     }
 
     public synchronized void drawNextTile(Graphics2D g, int x, int y) {
-        tiles.get(0).draw(g, 0, x, y, false);
+        tiles.get(0).draw(g, x, y, false,0);
     }
     
 }

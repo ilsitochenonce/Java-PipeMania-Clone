@@ -9,7 +9,7 @@ import java.awt.Composite;
 import java.awt.Container;
 import java.awt.Cursor;
 import javax.sound.midi.Sequence;
-import ros.game.impl.TileLoaderAndFactory;
+import ros.game.tiles.TileLoaderAndFactory;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import ros.game.sound.Sound;
@@ -158,7 +158,7 @@ public class StartGameState implements GameState, ActionListener {
         }
         buttonSpace.setVisible(false);
 
-        //TODO set starting level
+        //TODO imposta il livello di partenza
         livelloCorrente = 0;
         punteggio = 0;
         goToNextLevel();
@@ -258,7 +258,7 @@ public class StartGameState implements GameState, ActionListener {
                 //Scrivi il punteggio corrente
                 g.drawString("Points " + punteggio, 150, 40);
                 //disegno la board
-                board.draw(g, 0);
+                board.draw(g);
                 break;
             case ACCELERATED_GAME:
                 g.drawImage(sfondi[livelloCorrente - 1], 0, 0, null);
@@ -269,7 +269,7 @@ public class StartGameState implements GameState, ActionListener {
                 //Scrivi il punteggio corrente
                 g.drawString("Points " + punteggio, 150, 40);
                 //disegno la board
-                board.draw(g, 0);
+                board.draw(g);
                 break;
             case EXIT_GAME:
                 g.drawImage(sfondi[livelloCorrente - 1], 0, 0, null);
@@ -290,7 +290,7 @@ public class StartGameState implements GameState, ActionListener {
                 //Scrivi il punteggio corrente
                 g.drawString("Points " + punteggio, 150, 40);
                 //disegno la board
-                board.draw(g, 0);
+                board.draw(g);
                 break;
             case SHOW_FINISH_LEVEL:
                 //Disegna sfondo
@@ -307,7 +307,7 @@ public class StartGameState implements GameState, ActionListener {
                 g.drawString("Level " + livelloCorrente, 20, 40);
                 //Scrivi il punteggio corrente
                 g.drawString("Points " + punteggio, 150, 40);
-                board.draw(g, 0);
+                board.draw(g);
                 break;
             case SHOW_STARTING_LEVEL:
                 //Disegna sfondo
@@ -465,7 +465,8 @@ public class StartGameState implements GameState, ActionListener {
                     //vai al prossimo stato
                     currentSubState = StartGameState.IN_GAME_BRIEFING;
                     briefingBar.startTimer(timerAction, livelloCorrente-1);
-                    //TODO suoni sound.play(btnSound);
+
+                    //effetto sonoro
                     sound.play(ok);
                 }
                 break;

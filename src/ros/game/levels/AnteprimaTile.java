@@ -5,7 +5,7 @@
 
 package ros.game.levels;
 
-import ros.game.impl.Tile;
+import ros.game.tiles.Tile;
 
 /**
  *

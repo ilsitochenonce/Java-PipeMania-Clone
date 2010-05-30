@@ -15,10 +15,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
 import ros.game.Main;
-import ros.game.impl.PosizioneTileVicina;
-import ros.game.impl.Tile;
-import ros.game.impl.TileLoaderAndFactory;
-import ros.game.impl.WaterDirection;
+import ros.game.tiles.PosizioneTileVicina;
+import ros.game.tiles.Tile;
+import ros.game.tiles.TileLoaderAndFactory;
+import ros.game.tiles.WaterDirection;
 import ros.game.input.GameAction;
 
 /**
@@ -98,16 +98,16 @@ public class Board implements ActionListener{
         board = new Tile[COLONNE][RIGHE];
     }
 
-    public synchronized void draw(Graphics2D g, int t) {
+    public synchronized void draw(Graphics2D g) {
         //TODO non disegnare la tile sotto il mouse
 
         //disegno le tile
         for (int x = 0; x < COLONNE; x++) {
             for (int y = 0; y < RIGHE; y++) {
                 if (tileCorrentePoint.x == x && tileCorrentePoint.y == y) {
-                    board[x][y].draw(g, t, (x * TILE_SIZEX) + BOARD_BASEX, (y * TILE_SIZEY) + BOARD_BASEY, false);//true);
+                    board[x][y].draw(g, (x * TILE_SIZEX) + BOARD_BASEX, (y * TILE_SIZEY) + BOARD_BASEY, true, timerCasella.getDelay());
                 } else {
-                    board[x][y].draw(g, t, (x * TILE_SIZEX) + BOARD_BASEX, (y * TILE_SIZEY) + BOARD_BASEY, false);
+                    board[x][y].draw(g, (x * TILE_SIZEX) + BOARD_BASEX, (y * TILE_SIZEY) + BOARD_BASEY, false, 0);
                 }
             }
         }
@@ -121,7 +121,7 @@ public class Board implements ActionListener{
             }
         }
         //disegno il preview
-        preview.draw(g, t);
+        preview.draw(g);
     }
 
     /**
