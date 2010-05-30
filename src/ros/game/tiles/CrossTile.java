@@ -7,12 +7,15 @@ package ros.game.tiles;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.util.Arrays;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ros.game.Main;
 import ros.game.state.ResourceManager;
+import ros.game.util.ImageTools;
 
 /**
  *
@@ -217,18 +220,26 @@ public class CrossTile  extends Tile{
         frames_sottosopra_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
 
         for(int i=1;i<=Tile.NUMERO_FRAME_ANIMAZIONE;i++){
-            //non attraversati
-            //TODO un unico array (cambiare la funzione draw ruotando l'immagine)
-            frames_sinistradestra_non_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/INCROCIO_DA_LEFT_"+i+"_0.png");
-            frames_destrasinistra_non_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/INCROCIO_DA_RIGHT_"+i+"_0.png");
-            frames_soprasotto_non_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/INCROCIO_DA_TOP_"+i+"_0.png");
+            //non attraversati  
             frames_sottosopra_non_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/INCROCIO_DA_BOTTOM_"+i+"_0.png");
             //attraversati
-            frames_sinistradestra_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/INCROCIO_DA_LEFT_"+i+"_1.png");
-            frames_destrasinistra_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/INCROCIO_DA_RIGHT_"+i+"_1.png");
-            frames_soprasotto_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/INCROCIO_DA_TOP_"+i+"_1.png");
             frames_sottosopra_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/INCROCIO_DA_BOTTOM_"+i+"_1.png");
         }
+
+        //creo la trasformazione da applicare
+        AffineTransform at =  AffineTransform.getRotateInstance(Math.PI / 2.0, imageBase.getWidth(null)/2.0,
+                imageBase.getHeight(null)/2.0);
+        AffineTransformOp atRotazione = new AffineTransformOp( at, AffineTransformOp.TYPE_BICUBIC );
+
+        //creo le altre immagini per rotazione
+         for(int i=1;i<=Tile.NUMERO_FRAME_ANIMAZIONE;i++){
+            frames_sinistradestra_non_attraversato[i-1] = atRotazione.filter(ImageTools.toBufferedImage(frames_sottosopra_non_attraversato[i-1]), null );
+            frames_sinistradestra_attraversato[i-1] = atRotazione.filter(ImageTools.toBufferedImage(frames_sottosopra_attraversato[i-1]), null );
+            frames_soprasotto_non_attraversato[i-1] = atRotazione.filter(ImageTools.toBufferedImage(frames_sinistradestra_non_attraversato[i-1]), null );
+            frames_soprasotto_attraversato[i-1] = atRotazione.filter(ImageTools.toBufferedImage(frames_sinistradestra_attraversato[i-1]), null );
+            frames_destrasinistra_non_attraversato[i-1] = atRotazione.filter(ImageTools.toBufferedImage(frames_soprasotto_non_attraversato[i-1]), null );
+            frames_destrasinistra_attraversato[i-1] = atRotazione.filter(ImageTools.toBufferedImage(frames_soprasotto_attraversato[i-1]), null );
+         }
     }
 
     @Override

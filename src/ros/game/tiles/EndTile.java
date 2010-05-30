@@ -120,8 +120,6 @@ class EndTile extends Tile {
                   }
             }
             /////////FINE CALCOLO FRAME
-            System.out.println(millisecondiTrascorsi + " " + tempoFrame + " " + numeroFrame);
-            
             switch (tipo) {
                 case TileLoaderAndFactory.END_TILE_DESTRA:
                     g.drawImage(versoDestra[numeroFrame-1], x, y, null);
