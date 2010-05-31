@@ -420,7 +420,7 @@ public class Board implements ActionListener{
                 if (difronte.x >= 0 & difronte.x < COLONNE & difronte.y >= 0 & difronte.y < RIGHE) {
                     WaterDirection entrataDisponibile = WaterDirection.allineato(uscita, board[difronte.x][difronte.y].getdirezioniDiEntrataLibere());
 
-                    System.out.println("entrata"+entrataDisponibile);
+                    System.out.println("entrata "+entrataDisponibile);
                     if (entrataDisponibile != null) {
                         tileCorrentePoint = difronte;
                         board[tileCorrentePoint.x][tileCorrentePoint.y].aggiungiAttraversamento(entrataDisponibile);

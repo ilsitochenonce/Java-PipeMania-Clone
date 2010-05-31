@@ -185,6 +185,7 @@ public class DoubleCrossingTile extends Tile{
                   }
             }
             /////////FINE CALCOLO FRAME
+
             switch (attraversamentiRealizzati.size()) {
                 case 1:
                     switch(attraversamentiRealizzati.elementAt(0)){
@@ -217,7 +218,7 @@ public class DoubleCrossingTile extends Tile{
                     }
                     break;
                 case 2:
-                   switch(attraversamentiRealizzati.elementAt(0)){
+                   switch(attraversamentiRealizzati.elementAt(1)){
                         case DESTRASOPRA:
                             g.drawImage(frames_destrasopra_attraversato[numeroFrame-1], x, y, null);
                             break;
@@ -269,12 +270,12 @@ public class DoubleCrossingTile extends Tile{
         image2attraversamenti_2 = resourceManager.loadImage("caselle/DOPPIACURVA2_2.png");
 
         //carica le immagini dell'animazione
-        frames_sinistrasopra_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
-        frames_sinistrasotto_attraversato= new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
         
+        frames_sinistrasotto_attraversato= new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
+        frames_soprasinistra_attraversato= new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
         frames_destrasopra_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
         frames_destrasotto_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
-        frames_sinistrasopra_non_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
+        frames_soprasinistra_non_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
         frames_sinistrasotto_non_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
         frames_destrasotto_non_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
         frames_destrasopra_non_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
@@ -282,23 +283,22 @@ public class DoubleCrossingTile extends Tile{
         for(int i=1;i<=Tile.NUMERO_FRAME_ANIMAZIONE;i++){
             //non attraversati
             //TODO un unico array (cambiare la funzione draw ruotando l'immagine)
-            frames_sinistrasopra_non_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/DOPPIACURVA1_DA_TOP_"+i+"_0.png");
+            frames_soprasinistra_non_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/DOPPIACURVA1_DA_TOP_"+i+"_0.png");
             frames_sinistrasotto_non_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/DOPPIACURVA2_DA_LEFT_"+i+"_0.png");
             frames_destrasotto_non_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/DOPPIACURVA1_DA_RIGHT_"+i+"_0.png");
             frames_destrasopra_non_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/DOPPIACURVA2_DA_RIGHT_"+i+"_0.png");
             //attraversati
-            frames_sinistrasopra_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/DOPPIACURVA1_DA_TOP_"+i+"_1.png");
+            frames_soprasinistra_attraversato[i - 1] = resourceManager.loadImage("caselle/ANIMATIONS/DOPPIACURVA1_DA_TOP_"+i+"_1.png");
             frames_sinistrasotto_attraversato[i-1] = resourceManager.loadImage("caselle/ANIMATIONS/DOPPIACURVA2_DA_LEFT_"+i+"_1.png");
             frames_destrasotto_attraversato[i - 1] = resourceManager.loadImage("caselle/ANIMATIONS/DOPPIACURVA1_DA_RIGHT_" + i + "_1.png");
             frames_destrasopra_attraversato[i - 1] = resourceManager.loadImage("caselle/ANIMATIONS/DOPPIACURVA2_DA_RIGHT_" + i + "_1.png");
         }
 
          //per rotazione
-        frames_soprasinistra_non_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
+        frames_sinistrasopra_non_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
         frames_sottodestra_non_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
-        frames_soprasinistra_attraversato= new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
+        frames_sinistrasopra_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
         frames_sottodestra_attraversato = new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
-        frames_sottodestra_attraversato= new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
         frames_sopradestra_non_attraversato= new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
         frames_sottosinistra_non_attraversato= new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
         frames_sopradestra_attraversato= new Image[Tile.NUMERO_FRAME_ANIMAZIONE];
@@ -310,14 +310,16 @@ public class DoubleCrossingTile extends Tile{
         AffineTransformOp atRotazione = new AffineTransformOp(at, AffineTransformOp.TYPE_BICUBIC);
 
         for (int i = 1; i <= Tile.NUMERO_FRAME_ANIMAZIONE; i++) {
-            frames_soprasinistra_non_attraversato[i - 1] = atRotazione.filter(ImageTools.toBufferedImage(frames_sinistrasotto_non_attraversato[i - 1]), null);
+            
             frames_sottodestra_non_attraversato[i - 1] = atRotazione.filter(ImageTools.toBufferedImage(frames_destrasopra_non_attraversato[i - 1]), null);
-            frames_soprasinistra_attraversato[i - 1] = atRotazione.filter(ImageTools.toBufferedImage(frames_sinistrasotto_attraversato[i - 1]), null);
             frames_sottodestra_attraversato[i - 1] = atRotazione.filter(ImageTools.toBufferedImage(frames_destrasopra_attraversato[i - 1]), null);
-            frames_sopradestra_non_attraversato[i - 1] = atRotazione.filter(ImageTools.toBufferedImage(frames_sinistrasopra_non_attraversato[i - 1]), null);
             frames_sottosinistra_non_attraversato[i - 1] = atRotazione.filter(ImageTools.toBufferedImage(frames_destrasotto_non_attraversato[i - 1]), null);
-            frames_sopradestra_attraversato[i - 1] = atRotazione.filter(ImageTools.toBufferedImage(frames_sinistrasopra_attraversato[i - 1]), null);
             frames_sottosinistra_attraversato[i - 1] = atRotazione.filter(ImageTools.toBufferedImage(frames_destrasotto_attraversato[i - 1]), null);
+            frames_sinistrasopra_attraversato[i-1] = atRotazione.filter(ImageTools.toBufferedImage(frames_sottosinistra_attraversato[i - 1]), null);
+            frames_sinistrasopra_non_attraversato[i - 1] = atRotazione.filter(ImageTools.toBufferedImage(frames_sottosinistra_non_attraversato[i - 1]), null);
+            
+            frames_sopradestra_non_attraversato[i - 1] = atRotazione.filter(ImageTools.toBufferedImage(frames_sinistrasopra_non_attraversato[i - 1]), null);
+            frames_sopradestra_attraversato[i - 1] = atRotazione.filter(ImageTools.toBufferedImage(frames_sinistrasopra_attraversato[i - 1]), null);
         }
     }
 
@@ -423,12 +425,15 @@ public class DoubleCrossingTile extends Tile{
                         break;
                     case LEFT:
                         attraversamentiRealizzati.add(Crossings.SINISTRASOPRA);
+                        timestampInizioAttraversamento = System.currentTimeMillis();
                         break;
                     case RIGHT:
                         attraversamentiRealizzati.add(Crossings.DESTRASOTTO);
+                        timestampInizioAttraversamento = System.currentTimeMillis();
                         break;
                     case TOP:
                         attraversamentiRealizzati.add(Crossings.SOPRASINISTRA);
+                        timestampInizioAttraversamento = System.currentTimeMillis();
                         break;
                 }
                 break;
@@ -436,15 +441,19 @@ public class DoubleCrossingTile extends Tile{
                 switch(direzioneDiEntrata){
                     case BOTTOM:
                         attraversamentiRealizzati.add(Crossings.SOTTOSINISTRA);
+                        timestampInizioAttraversamento = System.currentTimeMillis();
                         break;
                     case LEFT:
                         attraversamentiRealizzati.add(Crossings.SINISTRASOTTO);
+                        timestampInizioAttraversamento = System.currentTimeMillis();
                         break;
                     case RIGHT:
                         attraversamentiRealizzati.add(Crossings.DESTRASOPRA);
+                        timestampInizioAttraversamento = System.currentTimeMillis();
                         break;
                     case TOP:
                         attraversamentiRealizzati.add(Crossings.SOPRADESTRA);
+                        timestampInizioAttraversamento = System.currentTimeMillis();
                         break;
                 }
                 break;

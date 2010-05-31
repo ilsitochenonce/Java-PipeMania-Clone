@@ -2,8 +2,8 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2010-05-31T13:36:10</date>
-  <millis>1275305770973</millis>
+  <date>2010-05-31T17:59:28</date>
+  <millis>1275321568299</millis>
   <sequence>0</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
@@ -13,8 +13,8 @@
   <message>init database</message>
 </record>
 <record>
-  <date>2010-05-31T13:36:12</date>
-  <millis>1275305772278</millis>
+  <date>2010-05-31T17:59:29</date>
+  <millis>1275321569876</millis>
   <sequence>1</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
@@ -24,8 +24,8 @@
   <message>init sound</message>
 </record>
 <record>
-  <date>2010-05-31T13:36:12</date>
-  <millis>1275305772348</millis>
+  <date>2010-05-31T17:59:29</date>
+  <millis>1275321569949</millis>
   <sequence>2</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
@@ -35,8 +35,8 @@
   <message>init midi</message>
 </record>
 <record>
-  <date>2010-05-31T13:36:12</date>
-  <millis>1275305772504</millis>
+  <date>2010-05-31T17:59:30</date>
+  <millis>1275321570107</millis>
   <sequence>3</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
@@ -46,8 +46,8 @@
   <message>init gamecore</message>
 </record>
 <record>
-  <date>2010-05-31T13:36:12</date>
-  <millis>1275305772923</millis>
+  <date>2010-05-31T17:59:30</date>
+  <millis>1275321570436</millis>
   <sequence>4</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
@@ -57,8 +57,8 @@
   <message>init input manager</message>
 </record>
 <record>
-  <date>2010-05-31T13:36:12</date>
-  <millis>1275305772939</millis>
+  <date>2010-05-31T17:59:30</date>
+  <millis>1275321570629</millis>
   <sequence>5</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
@@ -68,8 +68,8 @@
   <message>init resource manager</message>
 </record>
 <record>
-  <date>2010-05-31T13:36:12</date>
-  <millis>1275305772941</millis>
+  <date>2010-05-31T17:59:30</date>
+  <millis>1275321570631</millis>
   <sequence>6</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
@@ -79,8 +79,8 @@
   <message>init game states</message>
 </record>
 <record>
-  <date>2010-05-31T13:36:13</date>
-  <millis>1275305773363</millis>
+  <date>2010-05-31T17:59:30</date>
+  <millis>1275321570996</millis>
   <sequence>7</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
@@ -90,8 +90,8 @@
   <message>loading resources</message>
 </record>
 <record>
-  <date>2010-05-31T13:36:15</date>
-  <millis>1275305775664</millis>
+  <date>2010-05-31T17:59:33</date>
+  <millis>1275321573364</millis>
   <sequence>8</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
@@ -101,41 +101,41 @@
   <message>setting to Loading State</message>
 </record>
 <record>
-  <date>2010-05-31T13:36:21</date>
-  <millis>1275305781049</millis>
+  <date>2010-05-31T17:59:37</date>
+  <millis>1275321577168</millis>
   <sequence>9</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
   <class>ros.game.levels.Board</class>
   <method>initForStartingLevel</method>
   <thread>10</thread>
-  <message>EndTile: java.awt.Point[x=7,y=4]StartTile: java.awt.Point[x=5,y=1]</message>
+  <message>EndTile: java.awt.Point[x=0,y=7]StartTile: java.awt.Point[x=1,y=0]</message>
 </record>
 <record>
-  <date>2010-05-31T13:38:06</date>
-  <millis>1275305886237</millis>
+  <date>2010-05-31T18:06:44</date>
+  <millis>1275322004572</millis>
   <sequence>10</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
   <class>ros.game.levels.Board</class>
   <method>initForStartingLevel</method>
   <thread>10</thread>
-  <message>EndTile: java.awt.Point[x=2,y=2]StartTile: java.awt.Point[x=5,y=4]</message>
+  <message>EndTile: java.awt.Point[x=0,y=2]StartTile: java.awt.Point[x=5,y=5]</message>
 </record>
 <record>
-  <date>2010-05-31T13:39:15</date>
-  <millis>1275305955749</millis>
+  <date>2010-05-31T18:08:05</date>
+  <millis>1275322085276</millis>
   <sequence>11</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
   <class>ros.game.levels.Board</class>
   <method>initForStartingLevel</method>
   <thread>10</thread>
-  <message>EndTile: java.awt.Point[x=1,y=4]StartTile: java.awt.Point[x=8,y=7]</message>
+  <message>EndTile: java.awt.Point[x=8,y=2]StartTile: java.awt.Point[x=6,y=3]</message>
 </record>
 <record>
-  <date>2010-05-31T13:39:36</date>
-  <millis>1275305976876</millis>
+  <date>2010-05-31T18:11:25</date>
+  <millis>1275322285330</millis>
   <sequence>12</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
@@ -145,8 +145,8 @@
   <message>stopping game</message>
 </record>
 <record>
-  <date>2010-05-31T13:39:36</date>
-  <millis>1275305976877</millis>
+  <date>2010-05-31T18:11:25</date>
+  <millis>1275322285330</millis>
   <sequence>13</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
@@ -156,8 +156,8 @@
   <message>closing midi player</message>
 </record>
 <record>
-  <date>2010-05-31T13:39:36</date>
-  <millis>1275305976895</millis>
+  <date>2010-05-31T18:11:25</date>
+  <millis>1275322285350</millis>
   <sequence>14</sequence>
   <logger>ros.game.pipemaniaclone</logger>
   <level>INFO</level>
