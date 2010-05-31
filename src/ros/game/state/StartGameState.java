@@ -159,7 +159,7 @@ public class StartGameState implements GameState, ActionListener {
         buttonSpace.setVisible(false);
 
         //TODO imposta il livello di partenza
-        livelloCorrente = 28;
+        livelloCorrente = 0;
         punteggio = 0;
         goToNextLevel();
         

@@ -181,7 +181,7 @@ public class CrossTile  extends Tile{
         else if (attraversamentiRealizzati.size() == 1)
             return 20;
         else if(attraversamentiRealizzati.size() == 2)
-            return 40;
+            return 200;
         else
             throw new InsubstantialNumberOfCrossingsException();
     }

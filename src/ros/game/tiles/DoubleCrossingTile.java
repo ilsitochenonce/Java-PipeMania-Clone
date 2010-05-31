@@ -118,7 +118,7 @@ public class DoubleCrossingTile extends Tile{
         switch(attraversamentiRealizzati.size()){
             case 0: return 0;
             case 1: return 20;
-            case 2: return 40;
+            case 2: return 200;
             default:
                 throw new InsubstantialNumberOfCrossingsException();
         }
@@ -192,35 +192,59 @@ public class DoubleCrossingTile extends Tile{
                             g.drawImage(frames_destrasopra_non_attraversato[numeroFrame-1], x, y, null);
                             break;
                         case SOPRADESTRA:
-                            g.drawImage(frames_destrasopra_non_attraversato[numeroFrame-1], x, y, null);
+                            g.drawImage(frames_sopradestra_non_attraversato[numeroFrame-1], x, y, null);
                             break;
                         case DESTRASOTTO:
-                            g.drawImage(imageDestraSotto_1, x, y, null);
+                            g.drawImage(frames_destrasotto_non_attraversato[numeroFrame-1], x, y, null);
                             break;
                         case SOTTODESTRA:
-                            g.drawImage(imageDestraSotto_1, x, y, null);
+                            g.drawImage(frames_sottodestra_non_attraversato[numeroFrame-1], x, y, null);
                             break;
                         case SOTTOSINISTRA:
-                            g.drawImage(imageSinistraSotto_2, x, y, null);
+                            g.drawImage(frames_sottosinistra_non_attraversato[numeroFrame-1], x, y, null);
                             break;
                         case SINISTRASOTTO:
-                            g.drawImage(imageSinistraSotto_2, x, y, null);
+                            g.drawImage(frames_sinistrasotto_non_attraversato[numeroFrame-1], x, y, null);
                             break;
                         case SINISTRASOPRA:
-                            g.drawImage(imageSinistraSopra_1, x, y, null);
+                            g.drawImage(frames_sinistrasopra_non_attraversato[numeroFrame-1], x, y, null);
                             break;
                         case SOPRASINISTRA:
-                            g.drawImage(imageSinistraSopra_1, x, y, null);
+                            g.drawImage(frames_soprasinistra_non_attraversato[numeroFrame-1], x, y, null);
                             break;
                         default:
                             throw new CrossingNotPossibleForTile();
                     }
                     break;
                 case 2:
-                    if(tipo == TileLoaderAndFactory.DOPPIACURVA_SINISTRASOPRA)
-                        g.drawImage(image2attraversamenti_1, x, y, null);
-                    else
-                        g.drawImage(image2attraversamenti_2, x, y, null);
+                   switch(attraversamentiRealizzati.elementAt(0)){
+                        case DESTRASOPRA:
+                            g.drawImage(frames_destrasopra_attraversato[numeroFrame-1], x, y, null);
+                            break;
+                        case SOPRADESTRA:
+                            g.drawImage(frames_sopradestra_attraversato[numeroFrame-1], x, y, null);
+                            break;
+                        case DESTRASOTTO:
+                            g.drawImage(frames_destrasotto_attraversato[numeroFrame-1], x, y, null);
+                            break;
+                        case SOTTODESTRA:
+                            g.drawImage(frames_sottodestra_attraversato[numeroFrame-1], x, y, null);
+                            break;
+                        case SOTTOSINISTRA:
+                            g.drawImage(frames_sottosinistra_attraversato[numeroFrame-1], x, y, null);
+                            break;
+                        case SINISTRASOTTO:
+                            g.drawImage(frames_sinistrasotto_attraversato[numeroFrame-1], x, y, null);
+                            break;
+                        case SINISTRASOPRA:
+                            g.drawImage(frames_sinistrasopra_attraversato[numeroFrame-1], x, y, null);
+                            break;
+                        case SOPRASINISTRA:
+                            g.drawImage(frames_soprasinistra_attraversato[numeroFrame-1], x, y, null);
+                            break;
+                        default:
+                            throw new CrossingNotPossibleForTile();
+                    }
                     break;
             }
         }
