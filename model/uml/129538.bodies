@@ -1,0 +1,142 @@
+class ScreenManager
+!!!131458.java!!!	ScreenManager()
+
+        GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        device = environment.getDefaultScreenDevice();
+!!!131586.java!!!	getCompatibleDisplayModes() : DisplayMode
+
+        DisplayMode[] x = device.getDisplayModes();
+
+        return x;
+!!!131714.java!!!	findFirstCompatibleMode(inout modes : DisplayMode) : DisplayMode
+
+        DisplayMode goodModes[] = device.getDisplayModes();
+        for (int i = 0; i < modes.length; i++) {
+            for (int j = 0; j < goodModes.length; j++) {
+                if (displayModesMatch(modes[i], goodModes[j])) {
+                    return goodModes[j];
+                }
+            }
+
+        }
+
+        return null;
+!!!131842.java!!!	getCurrentDisplayMode() : DisplayMode
+
+        return device.getDisplayMode();
+!!!131970.java!!!	displayModesMatch(inout necessario : DisplayMode, inout disponibile : DisplayMode) : boolean
+
+        if (necessario.getWidth() != disponibile.getWidth() ||
+            necessario.getHeight() != disponibile.getHeight())
+        {
+            return false;
+        }
+
+        if (necessario.getBitDepth() != DisplayMode.BIT_DEPTH_MULTI &&
+            disponibile.getBitDepth() != DisplayMode.BIT_DEPTH_MULTI &&
+            necessario.getBitDepth() != disponibile.getBitDepth())
+        {
+            return false;
+        }
+
+        if (necessario.getRefreshRate() !=
+            DisplayMode.REFRESH_RATE_UNKNOWN &&
+            disponibile.getRefreshRate() !=
+            DisplayMode.REFRESH_RATE_UNKNOWN &&
+            necessario.getRefreshRate() != disponibile.getRefreshRate())
+         {
+             return false;
+         }
+
+         return true;
+!!!132098.java!!!	setFullScreen(inout displayMode : DisplayMode, in window : JFrame) : void
+
+        //prova a impostare il fullscreen
+        boolean isFullScreen = device.isFullScreenSupported();
+        window.setUndecorated(isFullScreen);
+        window.setResizable(!isFullScreen);
+        window.setIgnoreRepaint(true);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        if (isFullScreen) {
+        // Full-screen mode
+        device.setFullScreenWindow(window);
+        window.validate();
+        }
+
+        //prova ad impostare la risoluzione 800x600
+        if (displayMode != null && device.isDisplayChangeSupported())
+            device.setDisplayMode(displayMode);
+       
+        try {
+            EventQueue.invokeAndWait(new Runnable() {
+                public void run() {
+                    window.createBufferStrategy(2);
+                }
+            });
+        }
+        catch (InterruptedException ex) {
+            // ignore
+        }
+        catch (InvocationTargetException  ex) {
+            // ignore
+        }
+!!!132226.java!!!	getGraphics() : Graphics2D
+
+        Window window = device.getFullScreenWindow();
+        if (window != null) {
+            BufferStrategy strategy = window.getBufferStrategy();
+            return (Graphics2D)strategy.getDrawGraphics();
+        }
+        else {
+            return null;
+        }
+!!!132354.java!!!	update() : void
+
+        Window window = device.getFullScreenWindow();
+        if (window != null) {
+            BufferStrategy strategy = window.getBufferStrategy();
+            if (!strategy.contentsLost()) {
+                strategy.show();
+            }
+        }
+        // Sync the display on some systems.
+        // (on Linux, this fixes event queue problems)
+        Toolkit.getDefaultToolkit().sync();
+!!!132482.java!!!	getFullScreenWindow() : JFrame
+
+        return (JFrame)device.getFullScreenWindow();
+!!!132610.java!!!	getWidth() : int
+
+        Window window = device.getFullScreenWindow();
+        if (window != null) {
+            return window.getWidth();
+        }
+        else {
+            return 0;
+        }
+!!!132738.java!!!	getHeight() : int
+
+        Window window = device.getFullScreenWindow();
+        if (window != null) {
+            return window.getHeight();
+        }
+        else {
+            return 0;
+        }
+!!!132866.java!!!	restoreScreen() : void
+
+        Window window = device.getFullScreenWindow();
+        if (window != null) {
+            window.dispose();
+        }
+        device.setFullScreenWindow(null);
+!!!132994.java!!!	createCompatibleImage(in w : int, in h : int, in transparancy : int) : BufferedImage
+
+        Window window = device.getFullScreenWindow();
+        if (window != null) {
+            GraphicsConfiguration gc =
+                window.getGraphicsConfiguration();
+            return gc.createCompatibleImage(w, h, transparancy);
+        }
+        return null;

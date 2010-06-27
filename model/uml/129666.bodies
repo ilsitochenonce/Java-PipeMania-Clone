@@ -1,0 +1,65 @@
+class HighScoresTableModel
+!!!135298.java!!!	HighScoresTableModel(inout conn : Connection)
+
+
+        top15Cache = new ArrayList<Object[]>();
+
+        if (conn != null) {
+            try {
+                Statement db_statement = conn.createStatement();
+                ResultSet resultTop15 = db_statement.executeQuery(query);
+
+                while (resultTop15.next()) {
+                    Object[] row = new Object[getColumnCount()];
+                    for (int j = 0; j < row.length; j++) {
+                        //position
+                        if (j == 0) {
+                            row[j] = new Integer(top15Cache.size() + 1);
+                        } else { //other info
+                            row[j] = resultTop15.getObject(j+1);
+                        }
+                    }
+                    top15Cache.add(row);
+                }
+
+                resultTop15.close();
+                db_statement.close();
+
+                conn.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+!!!135426.java!!!	getColumnCount() : int
+
+        return 4;
+!!!135554.java!!!	getColumnName(in c : int) : String
+
+        switch (c) {
+            case 0:
+                return "Position";
+            case 1:
+                return "Player Name";
+            case 2:
+                return "Points";
+            case 3:
+                return "Level";
+            default:
+                return null;
+        }
+!!!135682.java!!!	getRowCount() : int
+
+        return 15;
+        //return top15Cache.size();
+!!!135810.java!!!	getValueAt(in r : int, in c : int) : Object
+
+        if (r < top15Cache.size()) {
+            return ((Object[]) top15Cache.get(r))[c];
+        } else {
+            return null;
+        }
+!!!135938.java!!!	isCellEditable(in arg0 : int, in arg1 : int) : boolean
+
+        return false;

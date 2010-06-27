@@ -5,6 +5,7 @@
 
 package ros.game.state;
 
+import ros.game.ResourceManager;
 import java.awt.AlphaComposite;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -185,12 +186,12 @@ public class MenuGameState implements GameState, ActionListener{
     }
 
     /**
-        Creates a Swing JButton. The image used for the button is
-        located at "../images/menu/" + name + ".png". The image is
-        modified to create a "default" look (translucent) and a
-        "pressed" look (moved down and to the right).
-        <p>The button doesn't use Swing's look-and-feel and
-        instead just uses the image.
+    *   Creates a Swing JButton. The image used for the button is
+    *   located at "../images/menu/" + name + ".png". The image is
+    *   modified to create a "default" look (translucent) and a
+    *   "pressed" look (moved down and to the right).
+    *   <p>The button doesn't use Swing's look-and-feel and
+    *   instead just uses the image.
     */
     public JButton createButton(String name, String toolTip, int indexImage) {
 

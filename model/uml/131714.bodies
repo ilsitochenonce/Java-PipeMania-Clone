@@ -1,0 +1,49 @@
+class GameAction
+!!!143490.java!!!	GameAction(in name : String)
+
+        this(name, NORMAL);
+!!!143618.java!!!	GameAction(in name : String, in behavior : int)
+
+        this.name = name;
+        this.behavior = behavior;
+        reset();
+!!!143746.java!!!	getName() : String
+
+        return name;
+!!!143874.java!!!	reset() : void
+
+        state = STATE_RELEASED;
+        amount = 0;
+!!!144002.java!!!	tap() : void
+
+        press();
+        release();
+!!!144130.java!!!	press() : void
+
+        press(1);
+!!!144258.java!!!	press(in amount : int) : void
+
+        if (state != STATE_WAITING_FOR_RELEASE) {
+            this.amount+=amount;
+            state = STATE_PRESSED;
+        }
+
+!!!144386.java!!!	release() : void
+
+        state = STATE_RELEASED;
+!!!144514.java!!!	isPressed() : boolean
+
+        return (getAmount() != 0);
+!!!144642.java!!!	getAmount() : int
+
+        int retVal = amount;
+        if (retVal != 0) {
+            if (state == STATE_RELEASED) {
+                amount = 0;
+            }
+            else if (behavior == DETECT_INITAL_PRESS_ONLY) {
+                state = STATE_WAITING_FOR_RELEASE;
+                amount = 0;
+            }
+        }
+        return retVal;

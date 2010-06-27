@@ -1,5 +1,6 @@
 package ros.game.state;
 
+import ros.game.ResourceManager;
 import java.awt.AlphaComposite;
 import java.awt.Composite;
 import java.awt.Cursor;

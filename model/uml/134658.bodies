@@ -1,0 +1,5 @@
+class LoadResourceNotCalledException
+!!!165122.java!!!	LoadResourceNotCalledException()
+        super("Tile non clonabile - Risorse non caricate");
+!!!165250.java!!!	LoadResourceNotCalledException(in mes : String)
+        super(mes);

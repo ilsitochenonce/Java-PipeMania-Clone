@@ -1,32 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package ros.game.levels;
-
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JProgressBar;
-import javax.swing.Timer;
-import ros.game.input.GameAction;
-
-/**
- *
- * @author ros
- */
-public class BriefingProgressBar implements ActionListener  {
-
-    private long startTimerMillis;
-
-    private Timer timerBiefring;
-    private int[] briefingLevelsTime;
-
-    private JProgressBar briefingProgressBar;
-    private GameAction briefingFinishAction;
-
-    public BriefingProgressBar() {
+class BriefingProgressBar
+!!!141186.java!!!	BriefingProgressBar()
         briefingProgressBar = new JProgressBar();
         briefingProgressBar.setForeground(Color.blue);
         briefingProgressBar.setBackground(Color.white);
@@ -42,39 +15,24 @@ public class BriefingProgressBar implements ActionListener  {
             tmpBriefing -= 500;
         }
 
-    }
-
-    public void initForStartingLevel(int level) {
+!!!141314.java!!!	initForStartingLevel(in level : int) : void
         briefingProgressBar.setMaximum(briefingLevelsTime[level-1]);
         briefingProgressBar.setValue(0);
         briefingProgressBar.setVisible(true);
-    }
-
-    public void setVisible(boolean bool){
+!!!141442.java!!!	setVisible(inout bool : boolean) : void
         briefingProgressBar.setVisible(bool);
-    }
-
-    public JProgressBar getBriefingProgressBar() {
+!!!141570.java!!!	getBriefingProgressBar() : JProgressBar
         return briefingProgressBar;
-    }
-
-    public void startTimer(GameAction timerBiefringAction, int levelIndex){
+!!!141698.java!!!	startTimer(inout timerBiefringAction : GameAction, in levelIndex : int) : void
         System.out.println("START BIEFRING TIMER - LevelIndex: "+ levelIndex + " delay: "+ briefingLevelsTime[levelIndex]);
         System.out.flush();
         this.briefingFinishAction = timerBiefringAction;
         timerBiefring = new Timer(briefingLevelsTime[levelIndex], this);
         timerBiefring.start();
         startTimerMillis = System.currentTimeMillis();
-    }
-
-    /**
-     * aggiorna lo stato della progress bar
-     */
-    public void update(){
+!!!141826.java!!!	update() : void
         briefingProgressBar.setValue((int) (System.currentTimeMillis() - startTimerMillis));
-    }
-
-    public void actionPerformed(ActionEvent e) {
+!!!141954.java!!!	actionPerformed(inout e : ActionEvent) : void
         if(e.getSource() == timerBiefring){
             System.out.println("tempo biefring finito");
             System.out.flush();
@@ -82,15 +40,9 @@ public class BriefingProgressBar implements ActionListener  {
             briefingFinishAction.tap();
             timerBiefring.stop();
         }
-    }
-
-    public void acceleraBiefringTimer() {
+!!!142082.java!!!	acceleraBiefringTimer() : void
         timerBiefring.stop();
         briefingProgressBar.setValue(briefingProgressBar.getMaximum());
         briefingFinishAction.tap();
-    }
-
-    private void stopTimer(){
+!!!142210.java!!!	stopTimer() : void
         timerBiefring.stop();
-    }
-}

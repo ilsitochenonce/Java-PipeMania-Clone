@@ -14,14 +14,14 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ros.game.Main;
-import ros.game.state.ResourceManager;
+import ros.game.ResourceManager;
 import ros.game.util.ImageTools;
 
 /**
  *
  * @author Ros
  */
-public class DoubleCrossingTile extends Tile{
+public class DoubleCrossingTile implements  Tile{
 
     /*
      DOPPIACURVA_SINISTRASOPRA - 1

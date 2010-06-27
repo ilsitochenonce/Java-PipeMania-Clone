@@ -1,21 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package ros.game.levels;
-
-/**
- *
- * @author ros
- */
-public class casellaTimesLevelsData {
-
-    public static final int NUM_LEVELS = 30;
-
-    private int[] casellaLevelsTime;
-
-    public casellaTimesLevelsData() {
+class casellaTimesLevelsData
+!!!142338.java!!!	casellaTimesLevelsData()
         
         casellaLevelsTime = new int[NUM_LEVELS];
 
@@ -33,10 +17,5 @@ public class casellaTimesLevelsData {
             else
                 casellaLevelsTime[i] = 1000;
         }
-    }
-    
-    public int getCasellaTime(int levelIndex) {
+!!!142466.java!!!	getCasellaTime(in levelIndex : int) : int
          return casellaLevelsTime[levelIndex];
-    }
-
-}

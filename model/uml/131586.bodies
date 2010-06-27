@@ -1,0 +1,110 @@
+class TileLoaderAndFactory
+!!!168706.java!!!	TileLoaderAndFactory()
+        r = new Random();
+
+        vuota = new EmptyTile();
+        muro = new WallTile();
+        start_sinistra = new StartTile(START_TILE_SINISTRA);
+        start_destra = new StartTile(START_TILE_DESTRA);
+        start_sopra = new StartTile(START_TILE_SOPRA);
+        start_sotto = new StartTile(START_TILE_SOTTO);
+        end_sinistra = new EndTile(END_TILE_SINISTRA);
+        end_destra = new EndTile(END_TILE_DESTRA);
+        end_sopra = new EndTile(END_TILE_SOPRA);
+        end_sotto = new EndTile(END_TILE_SOTTO);
+        curva_sinistrasopra = new SingleCrossingTile(CURVA_SINISTRASOPRA);
+        curva_destrasopra = new SingleCrossingTile(CURVA_DESTRASOPRA);
+        curva_sinistrasotto = new SingleCrossingTile(CURVA_SINISTRASOTTO);
+        curva_destrasotto = new SingleCrossingTile(CURVA_DESTRASOTTO);
+        single_orizzontale = new SingleCrossingTile(ORIZZONTALE);
+        single_verticale = new SingleCrossingTile(VERTICALE);
+        incrocio = new CrossTile();
+        doppiacurva_sinistrasopra = new DoubleCrossingTile(DOPPIACURVA_SINISTRASOPRA);
+        doppiacurva_sinistrasotto = new DoubleCrossingTile(DOPPIACURVA_SINISTRASOTTO);
+!!!168834.java!!!	getRandomStartTile() : Tile
+        int starttype = r.nextInt(4);
+        switch(starttype){
+            case 0:
+                return getTile(START_TILE_DESTRA);
+            case 1:
+                return getTile(START_TILE_SINISTRA);
+            case 2:
+                return getTile(START_TILE_SOPRA);
+            default:
+                return getTile(START_TILE_SOTTO);
+        }
+!!!168962.java!!!	getRandomEndTile() : Tile
+        int starttype = r.nextInt(4);
+        switch(starttype){
+            case 0:
+                return getTile(END_TILE_DESTRA);
+            case 1:
+                return getTile(END_TILE_SINISTRA);
+            case 2:
+                return getTile(END_TILE_SOPRA);
+            default:
+                return getTile(END_TILE_SOTTO);
+        }
+!!!169090.java!!!	getTile(in tipoTile : int) : Tile
+        switch (tipoTile) {
+            case EMPTY_TILE:
+                return vuota.getNuovaIstanza();
+            case WALL_TILE:
+                return muro.getNuovaIstanza();
+            case START_TILE_SINISTRA:
+                return start_sinistra.getNuovaIstanza();
+            case START_TILE_DESTRA:
+                return start_destra.getNuovaIstanza();
+            case START_TILE_SOPRA:
+                return start_sopra.getNuovaIstanza();
+            case START_TILE_SOTTO:
+                return start_sotto.getNuovaIstanza();
+            case END_TILE_SINISTRA:
+                return end_sinistra.getNuovaIstanza();
+            case END_TILE_DESTRA:
+                return end_destra.getNuovaIstanza();
+            case END_TILE_SOPRA:
+                return end_sopra.getNuovaIstanza();
+            case END_TILE_SOTTO:
+                return end_sotto.getNuovaIstanza();
+            case CURVA_SINISTRASOPRA:
+                return curva_sinistrasopra.getNuovaIstanza();
+            case CURVA_DESTRASOPRA:
+                return curva_destrasopra.getNuovaIstanza();
+            case CURVA_SINISTRASOTTO:
+                return curva_sinistrasotto.getNuovaIstanza();
+            case CURVA_DESTRASOTTO:
+                return curva_destrasotto.getNuovaIstanza();
+            case ORIZZONTALE:
+                return single_orizzontale.getNuovaIstanza();
+            case VERTICALE:
+                return single_verticale.getNuovaIstanza();
+            case DOPPIACURVA_SINISTRASOPRA:
+                return doppiacurva_sinistrasopra.getNuovaIstanza();
+            case DOPPIACURVA_SINISTRASOTTO:
+                return doppiacurva_sinistrasotto.getNuovaIstanza();
+            case INCROCIO:
+                return incrocio.getNuovaIstanza();
+            default:
+                throw new NotExistingTileTypeException();
+        }
+!!!169218.java!!!	loadResources(inout resourceManager : ResourceManager) : void
+        vuota.loadResources(resourceManager);
+        muro.loadResources(resourceManager);
+        start_sinistra.loadResources(resourceManager);
+        //start_destra.loadResources(resourceManager);
+        //start_sopra.loadResources(resourceManager);
+        //start_sotto.loadResources(resourceManager);
+        end_sinistra.loadResources(resourceManager);
+        //end_destra.loadResources(resourceManager);
+        //end_sopra.loadResources(resourceManager);
+        //end_sotto.loadResources(resourceManager);
+        curva_sinistrasopra.loadResources(resourceManager);
+        //curva_destrasopra.loadResources(resourceManager);
+        //curva_sinistrasotto.loadResources(resourceManager);
+        //curva_destrasotto.loadResources(resourceManager);
+        //single_orizzontale.loadResources(resourceManager);
+        //single_verticale.loadResources(resourceManager);
+        incrocio.loadResources(resourceManager);
+        doppiacurva_sinistrasopra.loadResources(resourceManager);
+        //doppiacurva_sinistrasotto.loadResources(resourceManager);

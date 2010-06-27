@@ -7,6 +7,9 @@ import java.lang.reflect.InvocationTargetException;
 import javax.swing.JFrame;
 
 /**
+ * NOT USED IN GAME (USED WindowedScreenManager)
+ *
+ *
     The ScreenManager class manages initializing and displaying
     full screen graphics modes.
 */

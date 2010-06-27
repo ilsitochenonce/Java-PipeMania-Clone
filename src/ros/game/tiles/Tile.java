@@ -6,13 +6,13 @@
 package ros.game.tiles;
 
 import java.awt.Graphics2D;
-import ros.game.state.ResourceManager;
+import ros.game.ResourceManager;
 
 /**
  *
  * @author Ros
  */
-public abstract class Tile {
+public interface Tile {
 
     public static final int NUMERO_FRAME_ANIMAZIONE = 10;
     

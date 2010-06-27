@@ -1,0 +1,3947 @@
+format 66
+"tiles" // game::tiles
+  revision 1
+  modified_by 2 "ros"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default show_stereotype_properties default
+  
+  java_dir "ros/game/tiles"
+  java_package "ros.game.tiles"
+  classview 129154 "tiles"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    class 130946 "Tile"
+      abstract visibility public stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      attribute 147330 "NUMERO_FRAME_ANIMAZIONE"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  10"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 158594 "draw"
+	abstract public explicit_return_type "void"
+	nparams 5
+	  param inout name "g" explicit_type "Graphics2D"
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	  param inout name "attiva" explicit_type "boolean"
+	  param in name "tempoCasella" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 158722 "getNuovaIstanza"
+	abstract public return_type class_ref 130946 // Tile
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 158850 "getTipo"
+	abstract public explicit_return_type "int"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 158978 "isReplaceable"
+	abstract public explicit_return_type "boolean"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Il metodo controlla se il tile cliccato è di un tipo
+sostituibile e che non sia già stato attraversato.
+
+La board dovrà inoltre controllare che il tile non sia quello attivo.
+(Il tile attivo è sicuramente non sostituibile)
+
+@return true se il tile è sostituibile false altrimenti"
+      end
+
+      operation 159106 "getPunteggio"
+	abstract public explicit_return_type "int"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "ritorna il punteggio alla fine di un livello.
+
+Un tubo vuoto ritorna 0;
+Un tubo non atraversato ritorna 0;
+Un tubo attraversato 1 volta ritorna 10;
+Un tubo attraversato 2 volte ritorna 50;
+
+@return punteggio"
+      end
+
+      operation 159234 "getdirezioneDiUscita"
+	abstract public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "se il tile è in attraversamento ritorna la direzione di uscita dell'acqua o null altrimenti
+
+@return"
+      end
+
+      operation 159362 "getdirezioniDiEntrataLibere"
+	abstract public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "ritorna un array di direzioni aperte
+
+@return"
+      end
+
+      operation 159490 "aggiungiAttraversamento"
+	abstract public explicit_return_type "void"
+	nparams 1
+	  param inout name "attraversamento" type class_ref 131842 // WaterDirection
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "memorizza l'inizio dell'attraversamento (non serve memorizzarne la fine)
+
+@param attraversamento"
+      end
+
+      operation 159618 "loadResources"
+	abstract public explicit_return_type "void"
+	nparams 1
+	  param inout name "resourceManager" type class_ref 128386 // ResourceManager
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 131586 "TileLoaderAndFactory"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "@author Ros
+
+Carica le immagini statiche dei Tile.
+
+Nuove istanze di Tile sono ritornate dal metodo getTile(int tipoTile)
+"
+      attribute 162690 "CURVA_SINISTRASOPRA"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 162818 "CURVA_DESTRASOPRA"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 162946 "CURVA_SINISTRASOTTO"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  2"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 163074 "CURVA_DESTRASOTTO"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  3"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 163202 "ORIZZONTALE"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  4"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 163330 "VERTICALE"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  5"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 163458 "INCROCIO"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  6"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 163586 "DOPPIACURVA_SINISTRASOPRA"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  7"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 163714 "DOPPIACURVA_SINISTRASOTTO"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  8"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 163842 "WALL_TILE"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  9"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 163970 "EMPTY_TILE"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  10"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 164098 "START_TILE_SINISTRA"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  11"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 164226 "START_TILE_DESTRA"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  12"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 164354 "START_TILE_SOPRA"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  13"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 164482 "START_TILE_SOTTO"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  14"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 164610 "END_TILE_SINISTRA"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  15"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 164738 "END_TILE_DESTRA"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  16"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 164866 "END_TILE_SOPRA"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  17"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 164994 "END_TILE_SOTTO"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  18"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 165122 "NUMERO_TIPI_TILE_PREVIEW"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  9"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 165250 "NUMERO_TOTALE_TIPI_TILE"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  19"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 165378 "r"
+	package explicit_type "Random"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "per generare uno startTile o endTile a caso"
+      end
+
+      classrelation 140290 // start_sinistra (<unidirectional association>)
+	relation 140290 --->
+	  a role_name "start_sinistra" package
+	    comment "Start e End Tile
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 140290 // start_sinistra (<unidirectional association>)
+	  b parent class_ref 135170 // StartTile
+      end
+
+      classrelation 140418 // start_destra (<unidirectional association>)
+	relation 140418 --->
+	  a role_name "start_destra" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 140418 // start_destra (<unidirectional association>)
+	  b parent class_ref 135170 // StartTile
+      end
+
+      classrelation 140546 // start_sopra (<unidirectional association>)
+	relation 140546 --->
+	  a role_name "start_sopra" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 140546 // start_sopra (<unidirectional association>)
+	  b parent class_ref 135170 // StartTile
+      end
+
+      classrelation 140674 // start_sotto (<unidirectional association>)
+	relation 140674 --->
+	  a role_name "start_sotto" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 140674 // start_sotto (<unidirectional association>)
+	  b parent class_ref 135170 // StartTile
+      end
+
+      classrelation 140802 // end_sinistra (<unidirectional association>)
+	relation 140802 --->
+	  a role_name "end_sinistra" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 140802 // end_sinistra (<unidirectional association>)
+	  b parent class_ref 134402 // EndTile
+      end
+
+      classrelation 140930 // end_destra (<unidirectional association>)
+	relation 140930 --->
+	  a role_name "end_destra" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 140930 // end_destra (<unidirectional association>)
+	  b parent class_ref 134402 // EndTile
+      end
+
+      classrelation 141058 // end_sopra (<unidirectional association>)
+	relation 141058 --->
+	  a role_name "end_sopra" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 141058 // end_sopra (<unidirectional association>)
+	  b parent class_ref 134402 // EndTile
+      end
+
+      classrelation 141186 // end_sotto (<unidirectional association>)
+	relation 141186 --->
+	  a role_name "end_sotto" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 141186 // end_sotto (<unidirectional association>)
+	  b parent class_ref 134402 // EndTile
+      end
+
+      classrelation 141314 // muro (<unidirectional association>)
+	relation 141314 --->
+	  a role_name "muro" package
+	    comment "muro
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 141314 // muro (<unidirectional association>)
+	  b parent class_ref 135298 // WallTile
+      end
+
+      classrelation 141442 // vuota (<unidirectional association>)
+	relation 141442 --->
+	  a role_name "vuota" package
+	    comment "vuota
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 141442 // vuota (<unidirectional association>)
+	  b parent class_ref 134274 // EmptyTile
+      end
+
+      classrelation 141570 // curva_sinistrasopra (<unidirectional association>)
+	relation 141570 --->
+	  a role_name "curva_sinistrasopra" package
+	    comment "1 attraversamento possibile
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 141570 // curva_sinistrasopra (<unidirectional association>)
+	  b parent class_ref 135042 // SingleCrossingTile
+      end
+
+      classrelation 141698 // curva_destrasopra (<unidirectional association>)
+	relation 141698 --->
+	  a role_name "curva_destrasopra" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 141698 // curva_destrasopra (<unidirectional association>)
+	  b parent class_ref 135042 // SingleCrossingTile
+      end
+
+      classrelation 141826 // curva_sinistrasotto (<unidirectional association>)
+	relation 141826 --->
+	  a role_name "curva_sinistrasotto" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 141826 // curva_sinistrasotto (<unidirectional association>)
+	  b parent class_ref 135042 // SingleCrossingTile
+      end
+
+      classrelation 141954 // curva_destrasotto (<unidirectional association>)
+	relation 141954 --->
+	  a role_name "curva_destrasotto" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 141954 // curva_destrasotto (<unidirectional association>)
+	  b parent class_ref 135042 // SingleCrossingTile
+      end
+
+      classrelation 142082 // single_orizzontale (<unidirectional association>)
+	relation 142082 --->
+	  a role_name "single_orizzontale" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 142082 // single_orizzontale (<unidirectional association>)
+	  b parent class_ref 135042 // SingleCrossingTile
+      end
+
+      classrelation 142210 // single_verticale (<unidirectional association>)
+	relation 142210 --->
+	  a role_name "single_verticale" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 142210 // single_verticale (<unidirectional association>)
+	  b parent class_ref 135042 // SingleCrossingTile
+      end
+
+      classrelation 142338 // incrocio (<unidirectional association>)
+	relation 142338 --->
+	  a role_name "incrocio" package
+	    comment "2 attraversamenti possibili
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 142338 // incrocio (<unidirectional association>)
+	  b parent class_ref 134018 // CrossTile
+      end
+
+      classrelation 142466 // doppiacurva_sinistrasopra (<unidirectional association>)
+	relation 142466 --->
+	  a role_name "doppiacurva_sinistrasopra" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 142466 // doppiacurva_sinistrasopra (<unidirectional association>)
+	  b parent class_ref 134146 // DoubleCrossingTile
+      end
+
+      classrelation 142594 // doppiacurva_sinistrasotto (<unidirectional association>)
+	relation 142594 --->
+	  a role_name "doppiacurva_sinistrasotto" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 142594 // doppiacurva_sinistrasotto (<unidirectional association>)
+	  b parent class_ref 134146 // DoubleCrossingTile
+      end
+
+      operation 168706 "TileLoaderAndFactory"
+	public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 168834 "getRandomStartTile"
+	public return_type class_ref 130946 // Tile
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 168962 "getRandomEndTile"
+	public return_type class_ref 130946 // Tile
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 169090 "getTile"
+	public return_type class_ref 130946 // Tile
+	nparams 1
+	  param in name "tipoTile" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 169218 "loadResources"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "resourceManager" type class_ref 128386 // ResourceManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 131842 "WaterDirection"
+      visibility public stereotype "enum"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}enum ${name}${implements} {
+${items};
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      attribute 165634 "LEFT"
+	public type class_ref 131842 // WaterDirection
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 165762 "RIGHT"
+	public type class_ref 131842 // WaterDirection
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 165890 "TOP"
+	public type class_ref 131842 // WaterDirection
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 166018 "BOTTOM"
+	public type class_ref 131842 // WaterDirection
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 170498 "allineato"
+	class_operation public return_type class_ref 131842 // WaterDirection
+	nparams 2
+	  param inout name "uscita" type class_ref 131842 // WaterDirection
+	  param inout name "direzioniDiEntrataLibere" type class_ref 131842 // WaterDirection
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1}[] ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "
+@param uscita - direzione rispetto alla quale calcolare l'allinemento
+@param direzioniDiEntrataLibere -  direzioni ripetto alle quali calcolare l'allineamento
+@returnnull se non sono allineate"
+      end
+
+      operation 170626 "opposto"
+	class_operation private explicit_return_type "boolean"
+	nparams 2
+	  param inout name "a" type class_ref 131842 // WaterDirection
+	  param inout name "b" type class_ref 131842 // WaterDirection
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 133762 "CrossingNotPossibleForTile"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 138626 // <generalisation>
+	relation 138626 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 138626 // <generalisation>
+	  b parent class_ref 132226 // RuntimeException
+      end
+
+      operation 158466 "CrossingNotPossibleForTile"
+	public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 133890 "Crossings"
+      visibility public stereotype "enum"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}enum ${name}${implements} {
+${items};
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      attribute 145794 "SOTTOSOPRA"
+	public type class_ref 133890 // Crossings
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 145922 "SOPRASOTTO"
+	public type class_ref 133890 // Crossings
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 146050 "SINISTRADESTRA"
+	public type class_ref 133890 // Crossings
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 146178 "DESTRASINISTRA"
+	public type class_ref 133890 // Crossings
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 146306 "SINISTRASOPRA"
+	public type class_ref 133890 // Crossings
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 146434 "SINISTRASOTTO"
+	public type class_ref 133890 // Crossings
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 146562 "DESTRASOPRA"
+	public type class_ref 133890 // Crossings
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 146690 "DESTRASOTTO"
+	public type class_ref 133890 // Crossings
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 146818 "SOPRASINISTRA"
+	public type class_ref 133890 // Crossings
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 146946 "SOPRADESTRA"
+	public type class_ref 133890 // Crossings
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 147074 "SOTTOSINISTRA"
+	public type class_ref 133890 // Crossings
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 147202 "SOTTODESTRA"
+	public type class_ref 133890 // Crossings
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 134018 "CrossTile"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 138754 // <realization>
+	relation 138754 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 138754 // <realization>
+	  b parent class_ref 130946 // Tile
+      end
+
+      classrelation 138882 // attraversamentiRealizzati (<unidirectional association>)
+	relation 138882 --->
+	  stereotype "Vector"
+	  a role_name "attraversamentiRealizzati" private
+	    comment "Gli attraversamenti vengono aggiunti prima di
+iniziare l'attraversamento
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 138882 // attraversamentiRealizzati (<unidirectional association>)
+	  b parent class_ref 133890 // Crossings
+      end
+
+      attribute 147458 "timestampInizioAttraversamento"
+	private explicit_type "long"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "memorizza il timestamp dell'inizio di un attraversamento (per la gestione dell'animazione
+"
+      end
+
+      attribute 147586 "millisecondiTrascorsi"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "variabili per l'animazione"
+      end
+
+      attribute 147714 "tempoFrame"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 147842 "numeroFrame"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "da 1 a 10"
+      end
+
+      attribute 147970 "imageBase"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "no animation images
+"
+      end
+
+      attribute 148098 "imageCross1Orizzontale"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 148226 "imageCross1Verticale"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 148354 "imageCross2"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 148482 "frames_sinistradestra_non_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "animation images
+"
+      end
+
+      attribute 148610 "frames_destrasinistra_non_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 148738 "frames_soprasotto_non_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 148866 "frames_sottosopra_non_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 148994 "frames_sinistradestra_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 149122 "frames_destrasinistra_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 149250 "frames_soprasotto_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 149378 "frames_sottosopra_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 159746 "CrossTile"
+	public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Si può ottenere una nuova istanza della classe chiamando il metodo getTile(int type)
+della classe TileLoaderAndFactory
+"
+      end
+
+      operation 159874 "draw"
+	public explicit_return_type "void"
+	nparams 5
+	  param inout name "g" explicit_type "Graphics2D"
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	  param inout name "attiva" explicit_type "boolean"
+	  param in name "tempoCasella" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 160002 "getTipo"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 160130 "getNuovaIstanza"
+	public return_type class_ref 130946 // Tile
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 160258 "isReplaceable"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment "La board esegue il controllo nel caso la tile sia attiva( in attraversamento)
+prima di effettuare questo"
+      end
+
+      operation 160386 "getPunteggio"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 160514 "loadResources"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "resourceManager" type class_ref 128386 // ResourceManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 160642 "getdirezioneDiUscita"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 160770 "getdirezioniDiEntrataLibere"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 160898 "aggiungiAttraversamento"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "direzioneDiEntrata" type class_ref 131842 // WaterDirection
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+    end
+
+    class 134146 "DoubleCrossingTile"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 139010 // <realization>
+	relation 139010 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 139010 // <realization>
+	  b parent class_ref 130946 // Tile
+      end
+
+      attribute 149506 "tipo"
+	package explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "DOPPIACURVA_SINISTRASOPRA - 1
+SOPPIACURVA_SINISTRASOTTO - 2
+"
+      end
+
+      attribute 149634 "timestampInizioAttraversamento"
+	private explicit_type "long"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "memorizza il timestamp dell'inizio di un attraversamento (per la gestione dell'animazione
+"
+      end
+
+      attribute 149762 "millisecondiTrascorsi"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "variabili per l'animazione"
+      end
+
+      attribute 149890 "tempoFrame"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 150018 "numeroFrame"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "da 1 a 10"
+      end
+
+      classrelation 139138 // attraversamentiRealizzati (<unidirectional association>)
+	relation 139138 --->
+	  stereotype "Vector"
+	  a role_name "attraversamentiRealizzati" private
+	    comment "Gli attraversamenti vengono aggiunti prima di
+iniziare l'attraversamento
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 139138 // attraversamentiRealizzati (<unidirectional association>)
+	  b parent class_ref 133890 // Crossings
+      end
+
+      attribute 150146 "imageBase_1"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "no animation images
+"
+      end
+
+      attribute 150274 "imageSinistraSopra_1"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "vale anche per SopraSinistra"
+      end
+
+      attribute 150402 "imageDestraSotto_1"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "vale anche per SottoDestra"
+      end
+
+      attribute 150530 "image2attraversamenti_1"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 150658 "imageBase_2"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 150786 "imageSinistraSotto_2"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "vale anche per SottoSinistra"
+      end
+
+      attribute 150914 "imageDestraSopra_2"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "vale anche per SopraDestra"
+      end
+
+      attribute 151042 "image2attraversamenti_2"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151170 "frames_sinistrasopra_non_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "animation images tipo 1
+"
+      end
+
+      attribute 151298 "frames_soprasinistra_non_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151426 "frames_sottodestra_non_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151554 "frames_destrasotto_non_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151682 "frames_sinistrasopra_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151810 "frames_soprasinistra_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151938 "frames_sottodestra_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 152066 "frames_destrasotto_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 152194 "frames_destrasopra_non_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "animation images tipo 2
+"
+      end
+
+      attribute 152322 "frames_sopradestra_non_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 152450 "frames_sinistrasotto_non_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 152578 "frames_sottosinistra_non_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 152706 "frames_destrasopra_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 152834 "frames_sopradestra_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 152962 "frames_sinistrasotto_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 153090 "frames_sottosinistra_attraversato"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 161026 "DoubleCrossingTile"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "tipo" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Nuove istanza della classe si ottengono dal TileLoaderAndFactory col metodo getTile(int tipo)"
+      end
+
+      operation 161154 "getTipo"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 161282 "getNuovaIstanza"
+	public return_type class_ref 130946 // Tile
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 161410 "isReplaceable"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 161538 "getPunteggio"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 161666 "draw"
+	public explicit_return_type "void"
+	nparams 5
+	  param inout name "g" explicit_type "Graphics2D"
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	  param inout name "attiva" explicit_type "boolean"
+	  param in name "tempoCasella" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 161794 "loadResources"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "resourceManager" type class_ref 128386 // ResourceManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 161922 "getdirezioneDiUscita"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 162050 "getdirezioniDiEntrataLibere"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 162178 "aggiungiAttraversamento"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "direzioneDiEntrata" type class_ref 131842 // WaterDirection
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+    end
+
+    class 134274 "EmptyTile"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 139266 // <realization>
+	relation 139266 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 139266 // <realization>
+	  b parent class_ref 130946 // Tile
+      end
+
+      attribute 153218 "imageBase"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 162306 "getTipo"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 162434 "isReplaceable"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 162562 "draw"
+	public explicit_return_type "void"
+	nparams 5
+	  param inout name "g" explicit_type "Graphics2D"
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	  param inout name "attiva" explicit_type "boolean"
+	  param in name "tempoCasella" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 162690 "loadResources"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "resourceManager" type class_ref 128386 // ResourceManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 162818 "getPunteggio"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 162946 "getNuovaIstanza"
+	public return_type class_ref 130946 // Tile
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 163074 "getdirezioneDiUscita"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 163202 "getdirezioniDiEntrataLibere"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 163330 "aggiungiAttraversamento"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "attraversamento" type class_ref 131842 // WaterDirection
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+    end
+
+    class 134402 "EndTile"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 139394 // <realization>
+	relation 139394 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 139394 // <realization>
+	  b parent class_ref 130946 // Tile
+      end
+
+      attribute 153346 "tipo"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "END_TILE_SINISTRA
+END_TILE_DESTRA
+END_TILE_SOPRA
+END_TILE_SOTTO 
+"
+      end
+
+      attribute 153474 "timestampInizioAttraversamento"
+	private explicit_type "long"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "memorizza il timestamp dell'inizio di un attraversamento (per la gestione dell'animazione
+"
+      end
+
+      attribute 153602 "millisecondiTrascorsi"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "variabili per l'animazione"
+      end
+
+      attribute 153730 "tempoFrame"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 153858 "numeroFrame"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "da 1 a 10"
+      end
+
+      attribute 153986 "attraversata"
+	private explicit_type "boolean"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 154114 "imageBaseSinistra"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "base"
+      end
+
+      attribute 154242 "imageBaseDestra"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 154370 "imageBaseSopra"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 154498 "imageBaseSotto"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 154626 "imageBaseSinistraAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 154754 "imageBaseDestraAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 154882 "imageBaseSopraAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 155010 "imageBaseSottoAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 155138 "versoDestra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "animazione"
+      end
+
+      attribute 155266 "versoSinistra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "le image seguenti vengono create ruotando la base"
+      end
+
+      attribute 155394 "versoSopra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 155522 "versoSotto"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 163458 "EndTile"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "tipo" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 163586 "getTipo"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 163714 "draw"
+	public explicit_return_type "void"
+	nparams 5
+	  param inout name "g" explicit_type "Graphics2D"
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	  param inout name "attiva" explicit_type "boolean"
+	  param in name "tempoCasella" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 163842 "getNuovaIstanza"
+	public return_type class_ref 130946 // Tile
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 163970 "isReplaceable"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 164098 "getPunteggio"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 164226 "loadResources"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "resourceManager" type class_ref 128386 // ResourceManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 164354 "test"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Test function
+
+crea una finestra con le immagini del tile
+
+@return"
+      end
+
+      operation 164482 "getdirezioneDiUscita"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 164610 "getdirezioniDiEntrataLibere"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 164738 "aggiungiAttraversamento"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "attraversamento" type class_ref 131842 // WaterDirection
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+    end
+
+    class 134530 "InsubstantialNumberOfCrossingsException"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 139522 // <generalisation>
+	relation 139522 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 139522 // <generalisation>
+	  b parent class_ref 132226 // RuntimeException
+      end
+
+      operation 164866 "InsubstantialNumberOfCrossingsException"
+	public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 164994 "InsubstantialNumberOfCrossingsException"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "mes" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 134658 "LoadResourceNotCalledException"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author ros"
+      classrelation 139650 // <generalisation>
+	relation 139650 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 139650 // <generalisation>
+	  b parent class_ref 132226 // RuntimeException
+      end
+
+      operation 165122 "LoadResourceNotCalledException"
+	public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 165250 "LoadResourceNotCalledException"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "mes" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 134786 "NotExistingTileTypeException"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 139778 // <generalisation>
+	relation 139778 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 139778 // <generalisation>
+	  b parent class_ref 132226 // RuntimeException
+      end
+
+      operation 165378 "NotExistingTileTypeException"
+	public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 165506 "NotExistingTileTypeException"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "mes" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 134914 "PosizioneTileVicina"
+      visibility public stereotype "enum"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}enum ${name}${implements} {
+${items};
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author ros"
+      attribute 155650 "SOPRASINISTRA"
+	public type class_ref 134914 // PosizioneTileVicina
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 155778 "SOPRA"
+	public type class_ref 134914 // PosizioneTileVicina
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 155906 "SOPRADESTRA"
+	public type class_ref 134914 // PosizioneTileVicina
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 156034 "SINISTRA"
+	public type class_ref 134914 // PosizioneTileVicina
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 156162 "DESTRA"
+	public type class_ref 134914 // PosizioneTileVicina
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 156290 "SOTTOSINISTRA"
+	public type class_ref 134914 // PosizioneTileVicina
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 156418 "SOTTO"
+	public type class_ref 134914 // PosizioneTileVicina
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 156546 "SOTTODESTRA"
+	public type class_ref 134914 // PosizioneTileVicina
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 135042 "SingleCrossingTile"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 139906 // <realization>
+	relation 139906 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 139906 // <realization>
+	  b parent class_ref 130946 // Tile
+      end
+
+      attribute 156674 "tipo"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "CURVA_SINISTRASOPRA 
+CURVA_DESTRASOPRA
+CURVA_SINISTRASOTTO
+CURVA_DESTRASOTTO
+ORIZZONTALE
+VERTICALE
+"
+      end
+
+      attribute 156802 "timestampInizioAttraversamento"
+	private explicit_type "long"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "memorizza il timestamp dell'inizio di un attraversamento (per la gestione dell'animazione
+"
+      end
+
+      attribute 156930 "millisecondiTrascorsi"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "variabili per l'animazione"
+      end
+
+      attribute 157058 "tempoFrame"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 157186 "numeroFrame"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "da 1 a 10"
+      end
+
+      classrelation 140034 // attraversamento (<unidirectional association>)
+	relation 140034 --->
+	  a role_name "attraversamento" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 140034 // attraversamento (<unidirectional association>)
+	  b parent class_ref 133890 // Crossings
+      end
+
+      attribute 157314 "baseCurvaSinistraSopra"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "base"
+      end
+
+      attribute 157442 "baseCurvaSinistraSopraAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 157570 "baseVerticale"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 157698 "baseVerticaleAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 157826 "baseCurvaSinistraSotto"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 157954 "baseCurvaSinistraSottoAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 158082 "baseCurvaDestraSopra"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 158210 "baseCurvaDestraSopraAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 158338 "baseCurvaDestraSotto"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 158466 "baseCurvaDestraSottoAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 158594 "baseOrizzontale"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 158722 "baseOrizzontaleAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 158850 "orizzontaleVersoDestra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "animazione"
+      end
+
+      attribute 158978 "orizzontaleVersoSinistra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 159106 "verticaleVersoSopra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 159234 "verticaleVersoSotto"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 159362 "curvaSinistraSopraVersoSopra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 159490 "curvaSinistraSopraVersoSinistra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 159618 "curvaSinistraSottoVersoSotto"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 159746 "curvaSinistraSottoVersoSinistra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 159874 "curvaDestraSopraVersoSopra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 160002 "curvaDestraSopraVersoDestra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 160130 "curvaDestraSottoVersoSotto"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 160258 "curvaDestraSottoVersoDestra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 165634 "SingleCrossingTile"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "tipo" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 165762 "getTipo"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 165890 "draw"
+	public explicit_return_type "void"
+	nparams 5
+	  param inout name "g" explicit_type "Graphics2D"
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	  param inout name "attiva" explicit_type "boolean"
+	  param in name "tempoCasella" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 166018 "isReplaceable"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 166146 "getPunteggio"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 166274 "loadResources"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "resourceManager" type class_ref 128386 // ResourceManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 166402 "test"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Test function
+
+crea una finestra con le immagini del tile
+
+@return"
+      end
+
+      operation 166530 "getNuovaIstanza"
+	public return_type class_ref 130946 // Tile
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 166658 "getdirezioneDiUscita"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 166786 "getdirezioniDiEntrataLibere"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 166914 "aggiungiAttraversamento"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "direzioneDiEntrata" type class_ref 131842 // WaterDirection
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+    end
+
+    class 135170 "StartTile"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 140162 // <realization>
+	relation 140162 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 140162 // <realization>
+	  b parent class_ref 130946 // Tile
+      end
+
+      attribute 160386 "tipo"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "START_TILE_SINISTRA
+START_TILE_DESTRA
+START_TILE_SOPRA
+START_TILE_SOTTO
+"
+      end
+
+      attribute 160514 "timestampInizioAttraversamento"
+	private explicit_type "long"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "memorizza il timestamp dell'inizio di un attraversamento (per la gestione dell'animazione
+"
+      end
+
+      attribute 160642 "millisecondiTrascorsi"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "variabili per l'animazione"
+      end
+
+      attribute 160770 "tempoFrame"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 160898 "numeroFrame"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "da 1 a 10"
+      end
+
+      attribute 161026 "attraversata"
+	private explicit_type "boolean"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 161154 "imageBaseSinistra"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "base"
+      end
+
+      attribute 161282 "imageBaseDestra"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 161410 "imageBaseSopra"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 161538 "imageBaseSotto"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 161666 "imageBaseSinistraAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 161794 "imageBaseDestraAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 161922 "imageBaseSopraAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 162050 "imageBaseSottoAttraversata"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 162178 "versoDestra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "animazione"
+      end
+
+      attribute 162306 "versoSinistra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "le image seguenti vengono create ruotando la base"
+      end
+
+      attribute 162434 "versoSopra"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 162562 "versoSotto"
+	class_attribute private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 167042 "StartTile"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "tipo" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 167170 "isAttraversata"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 167298 "setAttraversata"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 167426 "getTipo"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 167554 "draw"
+	public explicit_return_type "void"
+	nparams 5
+	  param inout name "g" explicit_type "Graphics2D"
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	  param inout name "attiva" explicit_type "boolean"
+	  param in name "tempoCasella" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 167682 "getNuovaIstanza"
+	public return_type class_ref 130946 // Tile
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 167810 "isReplaceable"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 167938 "getPunteggio"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 168066 "loadResources"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "resourceManager" type class_ref 128386 // ResourceManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 168194 "test"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Test function
+
+crea una finestra con le immagini del tile
+
+@return"
+      end
+
+      operation 168322 "getdirezioneDiUscita"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 168450 "getdirezioniDiEntrataLibere"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 168578 "aggiungiAttraversamento"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "attraversamento" type class_ref 131842 // WaterDirection
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+    end
+
+    class 135298 "WallTile"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 142722 // <realization>
+	relation 142722 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 142722 // <realization>
+	  b parent class_ref 130946 // Tile
+      end
+
+      attribute 165506 "imageBase"
+	class_attribute private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 169346 "getTipo"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 169474 "isReplaceable"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 169602 "loadResources"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "resourceManager" type class_ref 128386 // ResourceManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 169730 "draw"
+	public explicit_return_type "void"
+	nparams 5
+	  param inout name "g" explicit_type "Graphics2D"
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	  param inout name "attiva" explicit_type "boolean"
+	  param in name "tempoCasella" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 169858 "getPunteggio"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 169986 "getNuovaIstanza"
+	public return_type class_ref 130946 // Tile
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 170114 "getdirezioneDiUscita"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 170242 "getdirezioniDiEntrataLibere"
+	public return_type class_ref 131842 // WaterDirection
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 170370 "aggiungiAttraversamento"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "attraversamento" type class_ref 131842 // WaterDirection
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+    end
+  end
+
+  deploymentview 129026 "tiles"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    artifact 131842 "CrossingNotPossibleForTile"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 133762 // CrossingNotPossibleForTile
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 131970 "Crossings"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 133890 // Crossings
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 132098 "Tile"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.Graphics2D;
+import ros.game.ResourceManager;
+${definition}"
+      associated_classes
+	class_ref 130946 // Tile
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 132226 "CrossTile"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.util.Arrays;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import ros.game.Main;
+import ros.game.ResourceManager;
+import ros.game.util.ImageTools;
+${definition}"
+      associated_classes
+	class_ref 134018 // CrossTile
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 132354 "DoubleCrossingTile"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.util.Arrays;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import ros.game.Main;
+import ros.game.ResourceManager;
+import ros.game.util.ImageTools;
+${definition}"
+      associated_classes
+	class_ref 134146 // DoubleCrossingTile
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 132482 "EmptyTile"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import ros.game.Main;
+import ros.game.ResourceManager;
+${definition}"
+      associated_classes
+	class_ref 134274 // EmptyTile
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 132610 "EndTile"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import ros.game.Main;
+import ros.game.ResourceManager;
+import ros.game.util.ImageTools;
+${definition}"
+      associated_classes
+	class_ref 134402 // EndTile
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 132738 "InsubstantialNumberOfCrossingsException"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 134530 // InsubstantialNumberOfCrossingsException
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 132866 "LoadResourceNotCalledException"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 134658 // LoadResourceNotCalledException
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 132994 "NotExistingTileTypeException"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 134786 // NotExistingTileTypeException
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 133122 "PosizioneTileVicina"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 134914 // PosizioneTileVicina
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 133250 "SingleCrossingTile"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import ros.game.Main;
+import ros.game.ResourceManager;
+import ros.game.util.ImageTools;
+${definition}"
+      associated_classes
+	class_ref 135042 // SingleCrossingTile
+      end
+    end
+
+    artifact 133378 "StartTile"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import ros.game.Main;
+import ros.game.ResourceManager;
+import ros.game.util.ImageTools;
+${definition}"
+      associated_classes
+	class_ref 135170 // StartTile
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 133506 "TileLoaderAndFactory"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.util.Random;
+import ros.game.ResourceManager;
+${definition}"
+      associated_classes
+	class_ref 131586 // TileLoaderAndFactory
+      end
+    end
+
+    artifact 133634 "WallTile"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import ros.game.Main;
+import ros.game.ResourceManager;
+${definition}"
+      associated_classes
+	class_ref 135298 // WallTile
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 133762 "WaterDirection"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 131842 // WaterDirection
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+  end
+end

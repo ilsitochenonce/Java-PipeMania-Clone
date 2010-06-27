@@ -14,14 +14,14 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ros.game.Main;
-import ros.game.state.ResourceManager;
+import ros.game.ResourceManager;
 import ros.game.util.ImageTools;
 
 /**
  *
  * @author Ros
  */
-public class CrossTile  extends Tile{
+public class CrossTile  implements  Tile{
 
     /**
      * Gli attraversamenti vengono aggiunti prima di

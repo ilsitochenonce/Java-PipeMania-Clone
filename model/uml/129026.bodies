@@ -1,0 +1,165 @@
+class DatabaseManager
+!!!134274.java!!!	DatabaseManager()
+
+        //delete();
+        create();
+
+        //getConnection();
+        //insertRecord("Ross", 15, 2, 3, 4, 5, 6, 7, 8);
+        //insertRecord("Nick", 8, 2, 3, 4, 5, 6, 7, 8);
+        //disconnect();
+!!!134402.java!!!	getConnection() : Connection
+
+        try {
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+            conn = DriverManager.getConnection("jdbc:derby:top15;create=true");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            conn = null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            conn = null;
+        }
+        return conn;
+!!!134530.java!!!	disconnect() : void
+
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+!!!134658.java!!!	insertRecord(in playername : String, in points : int, in level : int) : void
+
+
+        conn = getConnection();
+
+        if (conn != null) {
+            try {
+                String query = "INSERT INTO top15(playername, points, level) VALUES (?,?,?)";
+
+                PreparedStatement st = conn.prepareStatement(query);
+
+                if(playername == null)
+                    st.setString(1, "playername");
+                else
+                    st.setString(1, playername);
+                st.setInt(2, points);      // total Points
+                st.setInt(3, level);       // level
+
+                st.executeUpdate();
+
+                st.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        disconnect();
+!!!134786.java!!!	printTop15() : void
+
+        conn = getConnection();
+
+        try {
+            String query = "SELECT * FROM top15 ORDER BY points DESC";
+
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            System.out.println("Posizione - Nome - Punti - Livello");
+            int pos = 1;
+            while(rs.next()){
+                System.out.println(pos + " - " + rs.getString(2) + " - " + rs.getInt(3) + " - "+ rs.getInt(4));
+                pos++;
+            }
+
+            rs.close();
+            st.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        disconnect();
+!!!134914.java!!!	getTop15Table() : JTable
+
+
+        Color[] colors = {
+            new Color(255, 224, 224),   // Light red
+            new Color(255, 255, 255),   // White
+            new Color(208, 255, 255),   // Light cyan
+            new Color(255, 255, 255),   // White
+        };
+
+
+        conn = getConnection();
+
+        JTable table = new ColoredJTable(new HighScoresTableModel(conn),colors);
+
+        return table;
+!!!135042.java!!!	delete() : void
+
+        conn = getConnection();
+
+        if (conn != null) {
+            try {
+                Statement db_statement = conn.createStatement();
+
+                db_statement.executeUpdate("DROP TABLE top15 ");
+
+                System.out.println("tabella top15 cancellata dal database");
+                db_statement.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            disconnect();
+        }
+
+!!!135170.java!!!	create() : void
+
+
+        conn = getConnection();
+
+        if (conn != null) {
+            try {
+                // if the table not exist => create
+                DatabaseMetaData dbmd;
+
+                dbmd = conn.getMetaData();
+
+                String[] myTables = {"TABLE"};
+                ResultSet tabelle = dbmd.getTables(null, null, "%", myTables);
+                String tableName = null;
+
+                if (tabelle.next()) {
+                    tableName = tabelle.getString("TABLE_NAME");
+                    System.out.println(tableName + " already in the db.");
+                } else {
+                    tabelle.close();
+                    System.out.println("nessuna tabella nel database");
+
+                    // crea tabella
+                    Statement db_statement = conn.createStatement();
+
+                    db_statement.executeUpdate("CREATE TABLE top15 (id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY CONSTRAINT top15_pk PRIMARY KEY, playername VARCHAR(50), points INTEGER, level INTEGER)");
+
+                    System.out.println("tabella top15 creata nel database");
+
+                    for (int i = 0; i < 15; i++) {
+                        insertRecord(tableName, 0, 0);
+                        System.out.println("inserito record " + i);
+                    }
+
+                    db_statement.close();
+                }
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            disconnect();
+        }

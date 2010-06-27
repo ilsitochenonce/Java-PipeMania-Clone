@@ -1,5 +1,6 @@
 package ros.game.state;
 
+import ros.game.ResourceManager;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;

@@ -4,6 +4,7 @@
  */
 package ros.game.state;
 
+import ros.game.ResourceManager;
 import java.awt.AlphaComposite;
 import java.awt.Composite;
 import java.awt.Container;
@@ -32,8 +33,8 @@ import ros.game.dialogs.StartLevelDialog;
 import ros.game.dialogs.StorePointsLevelDialog;
 import ros.game.input.GameAction;
 import ros.game.input.InputManager;
-import ros.game.levels.Board;
-import ros.game.levels.BriefingProgressBar;
+import ros.game.impl.Board;
+import ros.game.impl.BriefingProgressBar;
 import ros.game.sound.MidiPlayer;
 import ros.game.sound.SoundManager;
 
@@ -159,7 +160,7 @@ public class StartGameState implements GameState, ActionListener {
         buttonSpace.setVisible(false);
 
         //TODO imposta il livello di partenza
-        livelloCorrente = 20;
+        livelloCorrente = 0;
         punteggio = 0;
         goToNextLevel();
         

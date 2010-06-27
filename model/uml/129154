@@ -1,0 +1,1196 @@
+format 66
+"impl" // game::impl
+  revision 1
+  modified_by 2 "ros"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default show_stereotype_properties default
+  
+  java_dir "ros/game/impl"
+  java_package "ros.game.impl"
+  classview 129026 "impl"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    class 130818 "AnteprimaTile"
+      visibility public stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+Le funzionalità che devono essere fornite dal PreviewTile
+
+@author ros"
+      operation 138754 "getNextTile"
+	public return_type class_ref 130946 // Tile
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 138882 "initForStartingLevel"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "level" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 131074 "Board"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 130306 // <realization>
+	relation 130306 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130306 // <realization>
+	  b parent class_ref 131202 // ActionListener
+      end
+
+      attribute 132354 "COLONNE"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  11"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132482 "RIGHE"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  8"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132610 "BOARD_BASEX"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  25"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "angolo in alto a sinistra ed in basso a destra della TUBATURA"
+      end
+
+      attribute 132738 "BOARD_BASEY"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  95"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132866 "TILE_SIZEX"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  60"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "dimensioni dei TILE"
+      end
+
+      attribute 132994 "TILE_SIZEY"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  60"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 130434 // board (<unidirectional association>)
+	relation 130434 --->
+	  a role_name "board" multiplicity "[][]" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	    classrelation_ref 130434 // board (<unidirectional association>)
+	  b parent class_ref 130946 // Tile
+      end
+
+      classrelation 130562 // preview (<unidirectional association>)
+	relation 130562 --->
+	  a role_name "preview" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130562 // preview (<unidirectional association>)
+	  b parent class_ref 131330 // PreviewTiles
+      end
+
+      classrelation 130690 // datiTempoLivelli (<unidirectional association>)
+	relation 130690 --->
+	  a role_name "datiTempoLivelli" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130690 // datiTempoLivelli (<unidirectional association>)
+	  b parent class_ref 131458 // casellaTimesLevelsData
+      end
+
+      attribute 133122 "timerCasella"
+	private explicit_type "Timer"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133250 "BORDOSUPERIORE"
+	const_attribute private explicit_type "Point"
+	init_value "=  new Vector<Point>(Arrays.asList(new Point(0, 0), new Point(1, 0), new Point(2, 0), new Point(3, 0), new Point(4, 0), new Point(5, 0), new Point(6, 0), new Point(7, 0), new Point(8, 0), new Point(9, 0), new Point(COLONNE-1, 0) ))"
+	stereotype "Vector"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "vettori di utilità per calcolare la posizione dei Tile di inizio e fine
+"
+      end
+
+      attribute 133378 "BORDOINFERIORE"
+	const_attribute private explicit_type "Point"
+	init_value "=  new Vector<Point>(Arrays.asList(new Point(0, RIGHE-1), new Point(1, RIGHE-1), new Point(2, RIGHE-1), new Point(3, RIGHE-1), new Point(4, RIGHE-1), new Point(5, RIGHE-1), new Point(6, RIGHE-1), new Point(7, RIGHE-1), new Point(8, RIGHE-1), new Point(9, RIGHE-1), new Point(COLONNE-1, RIGHE-1) ))"
+	stereotype "Vector"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133506 "BORDOSINISTRO"
+	const_attribute private explicit_type "Point"
+	init_value "=  new Vector<Point>(Arrays.asList(new Point(0, 0), new Point(0, 1), new Point(0, 2), new Point(0, 3), new Point(0, 4), new Point(0, 5), new Point(0, 6), new Point(0, RIGHE-1) ))"
+	stereotype "Vector"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133634 "BORDODESTRO"
+	const_attribute private explicit_type "Point"
+	init_value "=  new Vector<Point>(Arrays.asList(new Point(COLONNE-1, 0), new Point(COLONNE-1, 1), new Point(COLONNE-1, 2), new Point(COLONNE-1, 3), new Point(COLONNE-1, 4), new Point(COLONNE-1, 5), new Point(COLONNE-1, 6), new Point(COLONNE-1, RIGHE-1) ))"
+	stereotype "Vector"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133762 "r"
+	private explicit_type "Random"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "per randomizzare la scelta della posizione della Tile di inizio e di fine
+"
+      end
+
+      attribute 133890 "tileCorrentePoint"
+	private explicit_type "Point"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "coordinate tile corrente (Il tile corrente è il tile in attraversamento)
+"
+      end
+
+      attribute 134018 "startTilePoint"
+	private explicit_type "Point"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "le coordinate del tile di inizio"
+      end
+
+      attribute 134146 "endTilePoint"
+	private explicit_type "Point"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "le coordinate del tile di fine"
+      end
+
+      attribute 134274 "tileSottoIlMousePoint"
+	private explicit_type "Point"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Le coordinate del tile sotto il mouse (vale (-1,-1) se il mouse non è sopra nessun tile)
+"
+      end
+
+      classrelation 130818 // tileGen (<unidirectional association>)
+	relation 130818 --->
+	  a role_name "tileGen" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130818 // tileGen (<unidirectional association>)
+	  b parent class_ref 131586 // TileLoaderAndFactory
+      end
+
+      attribute 134402 "acceleredTimerDelay"
+	private explicit_type "int"
+	init_value "=  500"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 130946 // casellaFinitaAction (<unidirectional association>)
+	relation 130946 --->
+	  a role_name "casellaFinitaAction" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130946 // casellaFinitaAction (<unidirectional association>)
+	  b parent class_ref 131714 // GameAction
+      end
+
+      attribute 134530 "punteggioUltimaTileAttraversata"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment " per memorizzare il punteggio delle tile attraversate"
+      end
+
+      operation 139010 "Board"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "tileGenerator" type class_ref 131586 // TileLoaderAndFactory
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 139138 "draw"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "g" explicit_type "Graphics2D"
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 139266 "initForStartingLevel"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "level" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "inizializza la Board ad ogni livello
+"
+      end
+
+      operation 139394 "tileDiFronte"
+	private explicit_return_type "Point"
+	nparams 2
+	  param inout name "indiceTileDiPartenza" explicit_type "Point"
+	  param inout name "direzione" type class_ref 131842 // WaterDirection
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "calcola la posizione di fronte ad un Tile data la direzione e gli indici del tile di partenza
+
+@param indiceTileDiPartenza (il punto di partenza)
+@param direzione (la direzione verso la quale calcolare)
+@return"
+      end
+
+      operation 139522 "tileIntorno"
+	private explicit_return_type "Point"
+	nparams 1
+	  param inout name "indiceTileDiPartenza" explicit_type "Point"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "
+@param indiceTileDiPartenza
+@return"
+      end
+
+      operation 139650 "getRandomBoardPosition"
+	private explicit_return_type "Point"
+	nparams 1
+	  param inout name "puntiEsclusi" explicit_type "Vector<Point>"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "
+@param puntiEsclusi (un array di punti da escludere)  null o un array vuoto -> non esclude nessun punto
+@return un punto nella Board"
+      end
+
+      operation 139778 "componetnCoordinateToBoardIndex"
+	private explicit_return_type "Point"
+	nparams 1
+	  param inout name "compCoord" explicit_type "Point"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "
+@param compCoord
+@return l'indice della board o (-1,-1) se le coordinate sono fuori"
+      end
+
+      operation 139906 "updateMousePosition"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "mouseCoordinate" explicit_type "Point"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "aggiorna il tile che sta sotto il mouse
+
+@param mouseCoordinatePx"
+      end
+
+      operation 140034 "sostituisciTileSePossibile"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "clikedMousePosition" explicit_type "Point"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 140162 "startCasellaTimer"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "casellaFinitaAction" type class_ref 131714 // GameAction
+	  param in name "levelIndex" explicit_type "int"
+	  param inout name "isAcceleredGame" explicit_type "boolean"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 140290 "actionPerformed"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "ActionEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "evento \"fine del tempo di casella\"
+@param e"
+      end
+
+      operation 140418 "isEndTileReached"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "
+@return "
+      end
+
+      operation 140546 "getPunteggioTileAttraversata"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 140674 "goToNextTile"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Posso andare al prossimo Tile?
+
+@return true o false"
+      end
+
+      operation 140802 "saltaTilePreviewCorrente"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 140930 "acceleraTimerCasella"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 141058 "stopTimerCasella"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 131330 "PreviewTiles"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 131458 // <realization>
+	relation 131458 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 131458 // <realization>
+	  b parent class_ref 130818 // AnteprimaTile
+      end
+
+      attribute 135426 "posizione"
+	private explicit_type "Point"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 135554 "NUMTILES"
+	const_attribute private explicit_type "int"
+	init_value "=  5"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Numero di Tile in preview
+"
+      end
+
+      attribute 135682 "SPACE"
+	const_attribute private explicit_type "int"
+	init_value "=  2"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "px"
+      end
+
+      classrelation 131586 // tiles (<unidirectional association>)
+	relation 131586 --->
+	  stereotype "LinkedList"
+	  a role_name "tiles" private
+	    comment "Contiene i Tile
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 131586 // tiles (<unidirectional association>)
+	  b parent class_ref 130946 // Tile
+      end
+
+      classrelation 131714 // tileGen (<unidirectional association>)
+	relation 131714 --->
+	  a role_name "tileGen" private
+	    comment "
+Generatore di Tile per clonazione
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 131714 // tileGen (<unidirectional association>)
+	  b parent class_ref 131586 // TileLoaderAndFactory
+      end
+
+      attribute 135810 "r"
+	private explicit_type "Random"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Generatore di numeri casuali
+"
+      end
+
+      attribute 135938 "tileNonPossibiliLivelloCorrente"
+	private explicit_type "Vector"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "tile non visualizzabili al livello corrente
+"
+      end
+
+      operation 142722 "PreviewTiles"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "tileGenerator" type class_ref 131586 // TileLoaderAndFactory
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "
+@param tileGenerator"
+      end
+
+      operation 142850 "draw"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "g" explicit_type "Graphics2D"
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 142978 "generateRandomTile"
+	private return_type class_ref 130946 // Tile
+	nparams 0
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 143106 "getNextTile"
+	public return_type class_ref 130946 // Tile
+	nparams 0
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retrieves and removes the head of this queue
+The metod insert new random tile at end
+
+@param level
+@return"
+      end
+
+      operation 143234 "initForStartingLevel"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "level" explicit_type "int"
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Decide i Tile possibili del preview in base al livello.
+
+@param level"
+      end
+
+      operation 143362 "drawNextTile"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "g" explicit_type "Graphics2D"
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 131458 "casellaTimesLevelsData"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author ros"
+      attribute 135170 "NUM_LEVELS"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  30"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 135298 "casellaLevelsTime"
+	private explicit_type "int"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 142338 "casellaTimesLevelsData"
+	public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 142466 "getCasellaTime"
+	public explicit_return_type "int"
+	nparams 1
+	  param in name "levelIndex" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 131970 "BriefingProgressBar"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author ros"
+      classrelation 131074 // <realization>
+	relation 131074 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 131074 // <realization>
+	  b parent class_ref 131202 // ActionListener
+      end
+
+      attribute 134658 "startTimerMillis"
+	private explicit_type "long"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134786 "timerBiefring"
+	private explicit_type "Timer"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134914 "briefingLevelsTime"
+	private explicit_type "int"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 135042 "briefingProgressBar"
+	private explicit_type "JProgressBar"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 131202 // briefingFinishAction (<unidirectional association>)
+	relation 131202 --->
+	  a role_name "briefingFinishAction" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 131202 // briefingFinishAction (<unidirectional association>)
+	  b parent class_ref 131714 // GameAction
+      end
+
+      operation 141186 "BriefingProgressBar"
+	public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 141314 "initForStartingLevel"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "level" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 141442 "setVisible"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "bool" explicit_type "boolean"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 141570 "getBriefingProgressBar"
+	public explicit_return_type "JProgressBar"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 141698 "startTimer"
+	public explicit_return_type "void"
+	nparams 2
+	  param inout name "timerBiefringAction" type class_ref 131714 // GameAction
+	  param in name "levelIndex" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 141826 "update"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "aggiorna lo stato della progress bar"
+      end
+
+      operation 141954 "actionPerformed"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "ActionEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 142082 "acceleraBiefringTimer"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 142210 "stopTimer"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 132098 "LevelNotImplementedException"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author ros"
+      classrelation 131330 // <generalisation>
+	relation 131330 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 131330 // <generalisation>
+	  b parent class_ref 132226 // RuntimeException
+      end
+
+      operation 142594 "LevelNotImplementedException"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "livello" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+  end
+
+  deploymentview 128386 "impl"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    artifact 129794 "AnteprimaTile"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import ros.game.tiles.Tile;
+${definition}"
+      associated_classes
+	class_ref 130818 // AnteprimaTile
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 129922 "Board"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Timer;
+import ros.game.Main;
+import ros.game.tiles.PosizioneTileVicina;
+import ros.game.tiles.Tile;
+import ros.game.tiles.TileLoaderAndFactory;
+import ros.game.tiles.WaterDirection;
+import ros.game.input.GameAction;
+${definition}"
+      associated_classes
+	class_ref 131074 // Board
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 130050 "BriefingProgressBar"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JProgressBar;
+import javax.swing.Timer;
+import ros.game.input.GameAction;
+${definition}"
+      associated_classes
+	class_ref 131970 // BriefingProgressBar
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 130178 "casellaTimesLevelsData"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 131458 // casellaTimesLevelsData
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 130306 "LevelNotImplementedException"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 132098 // LevelNotImplementedException
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 130434 "PreviewTiles"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.util.LinkedList;
+import ros.game.tiles.TileLoaderAndFactory;
+import java.util.Random;
+import java.util.Vector;
+import ros.game.tiles.Tile;
+${definition}"
+      associated_classes
+	class_ref 131330 // PreviewTiles
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+  end
+end

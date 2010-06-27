@@ -83,7 +83,7 @@ public abstract class GameCore {
         // make sure Swing components don't paint themselve
         NullRepaintManager.install();
 
-        periodo = (int) 1000.0/30;
+        periodo = (int) 1000.0 / 30;
 
         //inizializzo lo ScreenManager
         screen = new WindowedScreenManager();
@@ -102,11 +102,11 @@ public abstract class GameCore {
 
         Window window = screen.getWindow();
 
-            window.setFont(new Font("Dialog", Font.PLAIN, FONT_SIZE));
-            window.setBackground(BACK_COLOR);
-            window.setForeground(FRONT_COLOR);
+        window.setFont(new Font("Dialog", Font.PLAIN, FONT_SIZE));
+        window.setBackground(BACK_COLOR);
+        window.setForeground(FRONT_COLOR);
 
-            isRunning = true;
+        isRunning = true;
         //}
     }
 
@@ -163,9 +163,7 @@ public abstract class GameCore {
         Updates the state of the game/animation based on the
         amount of elapsed time that has passed.
     */
-    public void update(long elapsedTime){
-        
-    }
+    public abstract void update(long elapsedTime);
 
     /**
         Draws to the screen. Subclasses must override this

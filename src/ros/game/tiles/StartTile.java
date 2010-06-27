@@ -16,14 +16,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import ros.game.Main;
-import ros.game.state.ResourceManager;
+import ros.game.ResourceManager;
 import ros.game.util.ImageTools;
 
 /**
  *
  * @author Ros
  */
-class StartTile  extends Tile {
+class StartTile  implements Tile {
 
     /**
      * START_TILE_SINISTRA

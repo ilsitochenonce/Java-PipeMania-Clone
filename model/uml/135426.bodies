@@ -1,0 +1,6 @@
+class CenterTableCellRenderer
+!!!170754.java!!!	getTableCellRendererComponent(inout table : JTable, inout value : Object, inout isSelected : boolean, inout hasFocus : boolean, in row : int, in column : int) : Component
+        super.getTableCellRendererComponent(table, value, isSelected,
+                hasFocus, row, column);
+        setHorizontalAlignment(SwingConstants.CENTER);
+        return this;

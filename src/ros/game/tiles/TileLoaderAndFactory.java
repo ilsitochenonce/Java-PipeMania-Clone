@@ -1,7 +1,7 @@
 package ros.game.tiles;
 
 import java.util.Random;
-import ros.game.state.ResourceManager;
+import ros.game.ResourceManager;
 
 /**
  * @author Ros

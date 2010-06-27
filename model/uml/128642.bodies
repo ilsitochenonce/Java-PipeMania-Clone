@@ -1,0 +1,107 @@
+class InputManager
+!!!144770.java!!!	InputManager(inout comp : Component)
+
+        mouseClikedAtPoint = new Point();
+        this.comp = comp;
+
+        // register key and mouse listeners
+        comp.addMouseListener(this);
+!!!144898.java!!!	getMousePosition() : Point
+
+     return comp.getMousePosition();
+!!!145026.java!!!	getClikedMousePosition() : Point
+
+        return mouseClikedAtPoint;
+!!!145154.java!!!	setCursor(inout cursor : Cursor) : void
+
+        comp.setCursor(cursor);
+!!!145282.java!!!	mapToMouse(inout gameAction : GameAction, in mouseCode : int) : void
+
+        mouseActions[mouseCode] = gameAction;
+!!!145410.java!!!	clearMap(inout gameAction : GameAction) : void
+
+
+        for (int i=0; i<mouseActions.length; i++) {
+            if (mouseActions[i] == gameAction) {
+                mouseActions[i] = null;
+            }
+        }
+
+        gameAction.reset();
+!!!145538.java!!!	clearAllMaps() : void
+
+
+        for (int i=0; i<mouseActions.length; i++) {
+            mouseActions[i] = null;
+        }
+!!!145666.java!!!	getMaps(inout gameCode : GameAction) : List
+
+        ArrayList list = new ArrayList();
+
+        for (int i=0; i<mouseActions.length; i++) {
+            if (mouseActions[i] == gameCode) {
+                list.add(getMouseName(i));
+            }
+        }
+        return list;
+!!!145794.java!!!	resetAllGameActions() : void
+
+
+        for (int i=0; i<mouseActions.length; i++) {
+            if (mouseActions[i] != null) {
+                mouseActions[i].reset();
+            }
+        }
+!!!145922.java!!!	getMouseName(in mouseCode : int) : String
+
+        switch (mouseCode) {
+            case MOUSE_BUTTON_1: return "Mouse Button 1";
+            case MOUSE_BUTTON_2: return "Mouse Button 2";
+            case MOUSE_BUTTON_3: return "Mouse Button 3";
+            default: return "Unknown mouse code " + mouseCode;
+        }
+!!!146050.java!!!	getMouseButtonCode(inout e : MouseEvent) : int
+
+         switch (e.getButton()) {
+            case MouseEvent.BUTTON1:
+                return MOUSE_BUTTON_1;
+            case MouseEvent.BUTTON2:
+                return MOUSE_BUTTON_2;
+            case MouseEvent.BUTTON3:
+                return MOUSE_BUTTON_3;
+            default:
+                return -1;
+        }
+!!!146178.java!!!	getMouseButtonAction(inout e : MouseEvent) : GameAction
+
+        int mouseCode = getMouseButtonCode(e);
+        if (mouseCode != -1) {
+             return mouseActions[mouseCode];
+        }
+        else {
+             return null;
+        }
+!!!146306.java!!!	mousePressed(inout e : MouseEvent) : void
+
+        GameAction gameAction = getMouseButtonAction(e);
+        if (gameAction != null) {
+            mouseClikedAtPoint = e.getPoint();
+            gameAction.press();
+        }
+        e.consume();
+!!!146434.java!!!	mouseReleased(inout e : MouseEvent) : void
+
+        GameAction gameAction = getMouseButtonAction(e);
+        if (gameAction != null) {
+            gameAction.release();
+        }
+        e.consume();
+!!!146562.java!!!	mouseClicked(inout e : MouseEvent) : void
+
+        e.consume();
+!!!146690.java!!!	mouseEntered(inout e : MouseEvent) : void
+
+        e.consume();
+!!!146818.java!!!	mouseExited(inout e : MouseEvent) : void
+
+        e.consume();

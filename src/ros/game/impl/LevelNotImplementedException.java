@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package ros.game.levels;
+package ros.game.impl;
 
 /**
  *

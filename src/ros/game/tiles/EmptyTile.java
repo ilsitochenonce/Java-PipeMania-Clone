@@ -10,13 +10,13 @@ import java.awt.Image;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ros.game.Main;
-import ros.game.state.ResourceManager;
+import ros.game.ResourceManager;
 
 /**
  *
  * @author Ros
  */
-public class EmptyTile extends Tile {
+public class EmptyTile implements Tile {
 
     private static Image imageBase;
     

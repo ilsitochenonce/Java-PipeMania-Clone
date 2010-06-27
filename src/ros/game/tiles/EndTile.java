@@ -17,14 +17,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import ros.game.Main;
-import ros.game.state.ResourceManager;
+import ros.game.ResourceManager;
 import ros.game.util.ImageTools;
 
 /**
  *
  * @author Ros
  */
-class EndTile extends Tile {
+class EndTile implements Tile {
     /**
      * END_TILE_SINISTRA
      * END_TILE_DESTRA

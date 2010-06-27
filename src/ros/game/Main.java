@@ -12,7 +12,6 @@ import ros.game.sound.MidiPlayer;
 import ros.game.sound.SoundManager;
 import ros.game.state.GameStateManager;
 import ros.game.state.MenuGameState;
-import ros.game.state.ResourceManager;
 import ros.game.state.StartGameState;
 
 /**
@@ -51,7 +50,8 @@ public class Main extends GameCore{
 
     @Override
     public void init(){
-        
+
+        //crea un file di log
         try {
             log.addHandler(new FileHandler("log"));
         } catch (IOException e) {
@@ -78,7 +78,7 @@ public class Main extends GameCore{
         inputManager = new InputManager(screen.getWindow());
         
         log.info("init resource manager");
-        resourceManager = new PipeManiaResourceManager(screen.getWindow().getGraphicsConfiguration(), soundManager, midiPlayer);
+        resourceManager = new ResourceManager(screen.getWindow().getGraphicsConfiguration(), soundManager, midiPlayer);
 
         log.info("init game states");
         gameStateManager = new GameStateManager(inputManager, resourceManager.loadImage("Splash.jpg"));
