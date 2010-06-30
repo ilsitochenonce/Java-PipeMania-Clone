@@ -4,12 +4,12 @@
  */
 
 /*
- * LivelloCompletatoDialog.java
+ * PauseLevelDialog.java
  *
- * Created on 20-mag-2010, 19.25.18
+ * Created on 19-mag-2010, 18.37.01
  */
 
-package ros.game.dialogs;
+package ros.game.impl.states.dialogs;
 
 import javax.swing.JButton;
 
@@ -17,10 +17,10 @@ import javax.swing.JButton;
  *
  * @author ros
  */
-public class LivelloCompletatoDialog extends javax.swing.JPanel {
+public class PauseLevelDialog extends javax.swing.JPanel {
 
-    /** Creates new form LivelloCompletatoDialog */
-    public LivelloCompletatoDialog() {
+    /** Creates new form PauseLevelDialog */
+    public PauseLevelDialog() {
         initComponents();
     }
 
@@ -36,22 +36,21 @@ public class LivelloCompletatoDialog extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        jLabel1.setText("Livello completato!");
+        jLabel1.setText("Sei uscito dal gioco!");
 
-        jButton1.setText("Continua");
+        jButton1.setText("Esci dal gioco");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jButton1)))
+                        .addGap(12, 12, 12)
+                        .addComponent(jButton1))
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -59,9 +58,9 @@ public class LivelloCompletatoDialog extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

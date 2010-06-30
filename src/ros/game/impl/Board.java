@@ -14,12 +14,12 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
-import ros.game.Main;
-import ros.game.tiles.PosizioneTileVicina;
-import ros.game.tiles.Tile;
-import ros.game.tiles.TileLoaderAndFactory;
-import ros.game.tiles.WaterDirection;
-import ros.game.input.GameAction;
+import ros.game.engine.Main;
+import ros.game.impl.tiles.PosizioneTileVicina;
+import ros.game.impl.tiles.Tile;
+import ros.game.impl.tiles.TileLoaderAndFactory;
+import ros.game.impl.tiles.WaterDirection;
+import ros.game.engine.input.GameAction;
 
 /**
  *
@@ -111,6 +111,7 @@ public class Board implements ActionListener{
                 }
             }
         }
+        
         //disegno la tile sottoilmouse
         if (tileSottoIlMousePoint.x != -1 & tileSottoIlMousePoint.y != -1) {
             if (board[tileSottoIlMousePoint.x][tileSottoIlMousePoint.y].isReplaceable())//se la tile sotto il mouse è sostituibile
