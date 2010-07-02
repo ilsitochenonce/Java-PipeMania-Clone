@@ -1,0 +1,41 @@
+class SoundPlayer
+!!!147074.java!!!	SoundPlayer(inout source : InputStream)
+
+            this.source = source;
+!!!147202.java!!!	run() : void
+
+            // get line and buffer from ThreadLocals
+            SourceDataLine line = (SourceDataLine)localLine.get();
+            byte[] buffer = (byte[])localBuffer.get();
+            if (line == null || buffer == null) {
+                // the line is unavailable
+                return;
+            }
+
+            // copy data to the line
+            try {
+                int numBytesRead = 0;
+                while (numBytesRead != -1) {
+                    // if paused, wait until unpaused
+                    synchronized (pausedLock) {
+                        if (paused) {
+                            try {
+                                pausedLock.wait();
+                            }
+                            catch (InterruptedException ex) {
+                                return;
+                            }
+                        }
+                    }
+                    // copy data
+                    numBytesRead =
+                        source.read(buffer, 0, buffer.length);
+                    if (numBytesRead != -1) {
+                        line.write(buffer, 0, numBytesRead);
+                    }
+                }
+            }
+            catch (IOException ex) {
+                ex.printStackTrace();
+            }
+

@@ -1,0 +1,202 @@
+class SoundManager
+!!!144514.java!!!	isSoundEnable() : boolean
+
+        return enabled;
+!!!144642.java!!!	setEnable(inout v : boolean) : void
+
+        enabled = v;
+!!!144770.java!!!	SoundManager(inout playbackFormat : AudioFormat)
+
+        this(playbackFormat,
+            getMaxSimultaneousSounds(playbackFormat));
+!!!144898.java!!!	SoundManager(inout playbackFormat : AudioFormat, in maxSimultaneousSounds : int)
+
+        super(Math.min(maxSimultaneousSounds,
+            getMaxSimultaneousSounds(playbackFormat)));
+        this.playbackFormat = playbackFormat;
+        localLine = new ThreadLocal();
+        localBuffer = new ThreadLocal();
+        pausedLock = new Object();
+
+        enabled = true;
+        
+        // notify threads in pool it's ok to start
+        synchronized (this) {
+            notifyAll();
+        }
+!!!145026.java!!!	getMaxSimultaneousSounds(inout playbackFormat : AudioFormat) : int
+
+        DataLine.Info lineInfo = new DataLine.Info(
+            SourceDataLine.class, playbackFormat);
+        Mixer mixer = AudioSystem.getMixer(null);
+        int maxLines = mixer.getMaxLines(lineInfo);
+        if (maxLines == AudioSystem.NOT_SPECIFIED) {
+            maxLines = 32;
+        }
+        return maxLines;
+!!!145154.java!!!	cleanUp() : void
+
+        // signal to unpause
+        setPaused(false);
+
+        // close the mixer (stops any running sounds)
+        Mixer mixer = AudioSystem.getMixer(null);
+        if (mixer.isOpen()) {
+            mixer.close();
+        }
+!!!145282.java!!!	close() : void
+
+        cleanUp();
+        super.close();
+!!!145410.java!!!	join() : void
+
+        cleanUp();
+        super.join();
+!!!145538.java!!!	setPaused(inout paused : boolean) : void
+
+        if (this.paused != paused) {
+            synchronized (pausedLock) {
+                this.paused = paused;
+                if (!paused) {
+                    // restart sounds
+                    pausedLock.notifyAll();
+                }
+            }
+        }
+!!!145666.java!!!	isPaused() : boolean
+
+        return paused;
+!!!145794.java!!!	getSound(in filename : String) : Sound
+
+        return getSound(getAudioInputStream(filename));
+!!!145922.java!!!	getSound(inout is : InputStream) : Sound
+
+        return getSound(getAudioInputStream(is));
+!!!146050.java!!!	getSound(inout audioStream : AudioInputStream) : Sound
+
+        if (audioStream == null) {
+            return null;
+        }
+
+        // get the number of bytes to read
+        int length = (int)(audioStream.getFrameLength() *
+            audioStream.getFormat().getFrameSize());
+
+        // read the entire stream
+        byte[] samples = new byte[length];
+        DataInputStream is = new DataInputStream(audioStream);
+        try {
+            is.readFully(samples);
+            is.close();
+        }
+        catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        // return the samples
+        return new Sound(samples);
+!!!146178.java!!!	getAudioInputStream(in filename : String) : AudioInputStream
+
+        try {
+            return getAudioInputStream(
+                new FileInputStream(filename));
+        }
+        catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+!!!146306.java!!!	getAudioInputStream(inout is : InputStream) : AudioInputStream
+
+
+        try {
+            if (!is.markSupported()) {
+                is = new BufferedInputStream(is);
+            }
+            // open the source stream
+            AudioInputStream source =
+                AudioSystem.getAudioInputStream(is);
+
+            // convert to playback format
+            return AudioSystem.getAudioInputStream(
+                playbackFormat, source);
+        }
+        catch (UnsupportedAudioFileException ex) {
+            ex.printStackTrace();
+        }
+        catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        catch (IllegalArgumentException ex) {
+            ex.printStackTrace();
+        }
+
+        return null;
+!!!146434.java!!!	play(inout sound : Sound) : InputStream
+
+        return play(sound, false);
+!!!146562.java!!!	play(inout sound : Sound, inout loop : boolean) : InputStream
+
+        InputStream is;
+        if (isSoundEnable()) {
+            if (sound != null) {
+                if (loop) {
+                    is = new LoopingByteInputStream(
+                            sound.getSamples());
+                } else {
+                    is = new ByteArrayInputStream(sound.getSamples());
+                }
+
+                return play(is);
+            }
+        }
+        return null;
+!!!146690.java!!!	play(inout is : InputStream) : InputStream
+
+        if (is != null) {
+            runTask(new SoundPlayer(is));
+        }
+        return is;
+!!!146818.java!!!	threadStarted() : void
+
+        // wait for the SoundManager constructor to finish
+        synchronized (this) {
+            try {
+                wait();
+            }
+            catch (InterruptedException ex) { }
+        }
+
+        // use a short, 100ms (1/10th sec) buffer for filters that
+        // change in real-time
+        int bufferSize = playbackFormat.getFrameSize() *
+            Math.round(playbackFormat.getSampleRate() / 10);
+
+        // create, open, and start the line
+        SourceDataLine line;
+        DataLine.Info lineInfo = new DataLine.Info(
+            SourceDataLine.class, playbackFormat);
+        try {
+            line = (SourceDataLine)AudioSystem.getLine(lineInfo);
+            line.open(playbackFormat, bufferSize);
+        }
+        catch (LineUnavailableException ex) {
+            // the line is unavailable - signal to end this thread
+            Thread.currentThread().interrupt();
+            return;
+        }
+
+        line.start();
+
+        // create the buffer
+        byte[] buffer = new byte[bufferSize];
+
+        // set this thread's locals
+        localLine.set(line);
+        localBuffer.set(buffer);
+!!!146946.java!!!	threadStopped() : void
+
+        SourceDataLine line = (SourceDataLine)localLine.get();
+        if (line != null) {
+            line.drain();
+            line.close();
+        }

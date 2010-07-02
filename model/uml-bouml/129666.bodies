@@ -1,0 +1,7 @@
+class Sound
+!!!143106.java!!!	Sound(in samples : byte)
+
+        this.samples = samples;
+!!!143234.java!!!	getSamples() : byte
+
+        return samples;

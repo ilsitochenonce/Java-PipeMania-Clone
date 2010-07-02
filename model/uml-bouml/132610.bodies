@@ -1,0 +1,3 @@
+class LevelNotImplementedException
+!!!151170.java!!!	LevelNotImplementedException(in livello : int)
+         super("Livello non implementato - " + livello);

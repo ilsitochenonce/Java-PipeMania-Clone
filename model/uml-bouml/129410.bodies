@@ -1,0 +1,13 @@
+class NullRepaintManager
+!!!131842.java!!!	install() : void
+        RepaintManager repaintManager = new NullRepaintManager();
+        repaintManager.setDoubleBufferingEnabled(false);
+        RepaintManager.setCurrentManager(repaintManager);
+!!!131970.java!!!	addInvalidComponent(inout c : JComponent) : void
+        // do nothing
+!!!132098.java!!!	addDirtyRegion(inout c : JComponent, in x : int, in y : int, in w : int, in h : int) : void
+        // do nothing
+!!!132226.java!!!	markCompletelyDirty(inout c : JComponent) : void
+        // do nothing
+!!!132354.java!!!	paintDirtyRegions() : void
+        // do nothing

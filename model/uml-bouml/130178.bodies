@@ -1,0 +1,6 @@
+class Test
+!!!137858.java!!!	main(in args : String) : void
+        new Test();
+!!!137986.java!!!	Test()
+        db = new DatabaseManager();
+        db.printTop15();

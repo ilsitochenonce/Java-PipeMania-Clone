@@ -1,0 +1,5 @@
+class InsubstantialNumberOfCrossingsException
+!!!164610.java!!!	InsubstantialNumberOfCrossingsException()
+        super("Numero di attraversamenti del tile inconsistente");
+!!!164738.java!!!	InsubstantialNumberOfCrossingsException(in mes : String)
+        super(mes);

@@ -1,0 +1,29 @@
+class WallTile
+!!!169090.java!!!	getTipo() : int
+        return TileLoaderAndFactory.WALL_TILE;
+!!!169218.java!!!	isReplaceable() : boolean
+        return false;
+!!!169346.java!!!	loadResources(inout resourceManager : ResourceManager) : void
+       imageBase = resourceManager.loadImage("caselle/MURO.png");
+       if(imageBase == null)
+           throw new RuntimeException("immagine: caselle/MURO.png non caricata");
+!!!169474.java!!!	draw(inout g : Graphics2D, in x : int, in y : int, inout attiva : boolean, in tempoCasella : int) : void
+        if(imageBase != null)
+            g.drawImage(imageBase, x, y, null);
+        else
+            System.out.println("immagine muro null");
+!!!169602.java!!!	getPunteggio() : int
+        return 0;
+!!!169730.java!!!	getNuovaIstanza() : Tile
+        if (imageBase != null) {
+            return new WallTile();
+        } else {
+            Logger.getLogger(Main.LOGGER_NAME).log(Level.SEVERE, "Creazione nuova istanza di Wall Tile fallita - chiamare prima loadResources()");
+            throw new LoadResourceNotCalledException();
+        }
+!!!169858.java!!!	getdirezioneDiUscita() : WaterDirection
+        return null;
+!!!169986.java!!!	getdirezioniDiEntrataLibere() : WaterDirection
+        return new WaterDirection[0];
+!!!170114.java!!!	aggiungiAttraversamento(inout attraversamento : WaterDirection) : void
+        //niente

@@ -1,3 +1,0 @@
-class CrossingNotPossibleForTile
-!!!158466.java!!!	CrossingNotPossibleForTile()
-        super("Attraversamento del tile errato");

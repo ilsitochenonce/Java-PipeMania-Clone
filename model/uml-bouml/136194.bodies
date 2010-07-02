@@ -1,0 +1,29 @@
+class LoopingByteInputStream
+!!!171394.java!!!	LoopingByteInputStream(in buffer : byte)
+
+        super(buffer);
+        closed = false;
+!!!171522.java!!!	read(in buffer : byte, in offset : int, in length : int) : int
+
+        if (closed) {
+            return -1;
+        }
+        int totalBytesRead = 0;
+
+        while (totalBytesRead < length) {
+            int numBytesRead = super.read(buffer,
+                offset + totalBytesRead,
+                length - totalBytesRead);
+
+            if (numBytesRead > 0) {
+                totalBytesRead += numBytesRead;
+            }
+            else {
+                reset();
+            }
+        }
+        return totalBytesRead;
+!!!171650.java!!!	close() : void
+
+        super.close();
+        closed = true;

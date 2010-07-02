@@ -1,0 +1,21 @@
+class casellaTimesLevelsData
+!!!150914.java!!!	casellaTimesLevelsData()
+        
+        casellaLevelsTime = new int[NUM_LEVELS];
+
+        for(int i=0; i<NUM_LEVELS; i++){
+            if(i<6)
+                casellaLevelsTime[i] = 6000;
+            else if(i<11)
+                casellaLevelsTime[i] = 5000;
+            else if(i<16)
+                casellaLevelsTime[i] = 4000;
+            else if(i<21)
+                casellaLevelsTime[i] = 3000;
+            else if(i<26)
+                casellaLevelsTime[i] = 2000;
+            else
+                casellaLevelsTime[i] = 1000;
+        }
+!!!151042.java!!!	getCasellaTime(in levelIndex : int) : int
+         return casellaLevelsTime[levelIndex];

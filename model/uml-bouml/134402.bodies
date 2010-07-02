@@ -1,0 +1,24 @@
+class EmptyTile
+!!!162050.java!!!	getTipo() : int
+        return TileLoaderAndFactory.EMPTY_TILE;
+!!!162178.java!!!	isReplaceable() : boolean
+        return true;
+!!!162306.java!!!	draw(inout g : Graphics2D, in x : int, in y : int, inout attiva : boolean, in tempoCasella : int) : void
+        g.drawImage(imageBase, x, y, null);
+!!!162434.java!!!	loadResources(inout resourceManager : ResourceManager) : void
+         imageBase = resourceManager.loadImage("caselle/VUOTA.png");
+!!!162562.java!!!	getPunteggio() : int
+        return 0;
+!!!162690.java!!!	getNuovaIstanza() : Tile
+        if (imageBase != null) {
+            return new EmptyTile();
+        } else {          
+            Logger.getLogger(Main.LOGGER_NAME).log(Level.SEVERE, "Creazione nuova istanza di Empty Tile fallita - chiamare prima loadResources()");
+            throw new LoadResourceNotCalledException();
+        }
+!!!162818.java!!!	getdirezioneDiUscita() : WaterDirection
+        return null;
+!!!162946.java!!!	getdirezioniDiEntrataLibere() : WaterDirection
+        return new WaterDirection[0];
+!!!163074.java!!!	aggiungiAttraversamento(inout attraversamento : WaterDirection) : void
+        //niente

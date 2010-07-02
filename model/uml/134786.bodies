@@ -1,5 +1,0 @@
-class NotExistingTileTypeException
-!!!165378.java!!!	NotExistingTileTypeException()
-        super("Tipo Tile non esistente");
-!!!165506.java!!!	NotExistingTileTypeException(in mes : String)
-        super(mes);

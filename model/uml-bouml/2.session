@@ -1,0 +1,23 @@
+window_sizes 1440 827 276 1158 682 71
+diagrams
+  classdiagram_ref 128130 // packages
+    487 503 100 4 0 0
+  active  classdiagram_ref 129282 // Class Diagram (Impl)
+    1158 682 100 3 60 50
+  classdiagram_ref 129410 // Class Diagram (Engine)
+    926 545 100 3 540 50
+end
+show_stereotypes
+selected classdiagram_ref 129282 // Class Diagram (Impl)
+open
+  classview_ref 128130 // engine
+  classview_ref 128258 // input
+  classview_ref 128386 // sound
+  classview_ref 128514 // database
+  classview_ref 128898 // impl
+  classview_ref 129154 // states
+  classview_ref 129282 // dialogs
+  classview_ref 128642 // unknown
+  classview_ref 130690 // Class Diagram
+end
+end

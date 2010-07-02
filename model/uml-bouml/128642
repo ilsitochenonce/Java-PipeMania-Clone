@@ -1,0 +1,692 @@
+format 66
+"input" // src::ros::game::engine::input
+  revision 1
+  modified_by 2 "ros"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default show_stereotype_properties default
+  
+  java_dir "ros/game/engine/input"
+  java_package "ros.game.engine.input"
+  classview 128258 "input"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    class 128642 "InputManager"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "The InputManager manages input of mouse events.
+Events are mapped to GameActions."
+      classrelation 130050 // <realization>
+	relation 130050 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130050 // <realization>
+	  b parent class_ref 130434 // MouseListener
+      end
+
+      attribute 132482 "INVISIBLE_CURSOR"
+	class_attribute const_attribute public explicit_type "Cursor"
+	init_value "= 
+        Toolkit.getDefaultToolkit().createCustomCursor(
+            Toolkit.getDefaultToolkit().getImage(\"\"),
+            new Point(0,0),
+            \"invisible\")"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "An invisible cursor.
+"
+      end
+
+      attribute 132610 "MOUSE_BUTTON_1"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment " mouse codes"
+      end
+
+      attribute 132738 "MOUSE_BUTTON_2"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132866 "MOUSE_BUTTON_3"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  2"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132994 "NUM_MOUSE_CODES"
+	class_attribute const_attribute private explicit_type "int"
+	init_value "=  3"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 130178 // mouseActions (<unidirectional association>)
+	relation 130178 --->
+	  a role_name "mouseActions" multiplicity "[]" init_value "= 
+        new GameAction[NUM_MOUSE_CODES]" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	    classrelation_ref 130178 // mouseActions (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      attribute 133122 "comp"
+	private explicit_type "Component"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133250 "mouseClikedAtPoint"
+	private explicit_type "Point"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 139394 "InputManager"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "comp" explicit_type "Component"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Creates a new InputManager that listens to input from the
+specified component."
+      end
+
+      operation 139522 "getMousePosition"
+	public explicit_return_type "Point"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "
+@return posizione del mouse"
+      end
+
+      operation 139650 "getClikedMousePosition"
+	public explicit_return_type "Point"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "
+@return la posizione del mouse quando è stato cliccato il mouse"
+      end
+
+      operation 139778 "setCursor"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "cursor" explicit_type "Cursor"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Sets the cursor on this InputManager's input component."
+      end
+
+      operation 139906 "mapToMouse"
+	public explicit_return_type "void"
+	nparams 2
+	  param inout name "gameAction" type class_ref 130306 // GameAction
+	  param in name "mouseCode" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Maps a GameAction to a specific mouse action. The mouse
+codes are defined herer in InputManager (MOUSE_MOVE_LEFT,
+MOUSE_BUTTON_1, etc). If the mouse action already has
+a GameAction mapped to it, the new GameAction overwrites
+it."
+      end
+
+      operation 140034 "clearMap"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "gameAction" type class_ref 130306 // GameAction
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Clears all mapped keys and mouse actions to this
+GameAction."
+      end
+
+      operation 140162 "clearAllMaps"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Clears all mapped keys and mouse actions."
+      end
+
+      operation 140290 "getMaps"
+	public explicit_return_type "List"
+	nparams 1
+	  param inout name "gameCode" type class_ref 130306 // GameAction
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Gets a List of names of the keys and mouse actions mapped
+to this GameAction. Each entry in the List is a String."
+      end
+
+      operation 140418 "resetAllGameActions"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Resets all GameActions so they appear like they haven't
+been pressed."
+      end
+
+      operation 140546 "getMouseName"
+	class_operation public explicit_return_type "String"
+	nparams 1
+	  param in name "mouseCode" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Gets the name of a mouse code."
+      end
+
+      operation 140674 "getMouseButtonCode"
+	class_operation public explicit_return_type "int"
+	nparams 1
+	  param inout name "e" explicit_type "MouseEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Gets the mouse code for the button specified in this
+MouseEvent."
+      end
+
+      operation 140802 "getMouseButtonAction"
+	private return_type class_ref 130306 // GameAction
+	nparams 1
+	  param inout name "e" explicit_type "MouseEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 140930 "mousePressed"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "MouseEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment " from the MouseListener interface"
+      end
+
+      operation 141058 "mouseReleased"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "MouseEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment " from the MouseListener interface"
+      end
+
+      operation 141186 "mouseClicked"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "MouseEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment " from the MouseListener interface"
+      end
+
+      operation 141314 "mouseEntered"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "MouseEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 141442 "mouseExited"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "MouseEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 130306 "GameAction"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "The GameAction class is an abstract to a user-initiated
+action, like jumping or moving. GameActions can be mapped
+to keys or the mouse with the InputManager."
+      attribute 131330 "NORMAL"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Normal behavior. The isPressed() method returns true
+as long as the key is held down.
+"
+      end
+
+      attribute 131458 "DETECT_INITAL_PRESS_ONLY"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Initial press behavior. The isPressed() method returns
+true only after the key is first pressed, and not again
+until the key is released and pressed again.
+"
+      end
+
+      attribute 131586 "STATE_RELEASED"
+	class_attribute const_attribute private explicit_type "int"
+	init_value "=  0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131714 "STATE_PRESSED"
+	class_attribute const_attribute private explicit_type "int"
+	init_value "=  1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131842 "STATE_WAITING_FOR_RELEASE"
+	class_attribute const_attribute private explicit_type "int"
+	init_value "=  2"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131970 "name"
+	private explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132098 "behavior"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132226 "amount"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132354 "state"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 138114 "GameAction"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "name" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Create a new GameAction with the NORMAL behavior."
+      end
+
+      operation 138242 "GameAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "name" explicit_type "String"
+	  param in name "behavior" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Create a new GameAction with the specified behavior."
+      end
+
+      operation 138370 "getName"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Gets the name of this GameAction."
+      end
+
+      operation 138498 "reset"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Resets this GameAction so that it appears like it hasn't
+been pressed."
+      end
+
+      operation 138626 "tap"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Taps this GameAction. Same as calling press() followed
+by release()."
+      end
+
+      operation 138754 "press"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Signals that the key was pressed."
+      end
+
+      operation 138882 "press"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "amount" explicit_type "int"
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Signals that the key was pressed a specified number of
+times, or that the mouse move a spcified distance."
+      end
+
+      operation 139010 "release"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Signals that the key was released"
+      end
+
+      operation 139138 "isPressed"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Returns whether the key was pressed or not since last
+checked."
+      end
+
+      operation 139266 "getAmount"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "For keys, this is the number of times the key was
+pressed since it was last checked.
+For mouse movement, this is the distance moved."
+      end
+    end
+  end
+
+  deploymentview 128386 "input"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    artifact 129538 "GameAction"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 130306 // GameAction
+      end
+    end
+
+    artifact 129666 "InputManager"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.*;
+import java.awt.event.*;
+import java.util.List;
+import java.util.ArrayList;
+${definition}"
+      associated_classes
+	class_ref 128642 // InputManager
+      end
+    end
+  end
+end

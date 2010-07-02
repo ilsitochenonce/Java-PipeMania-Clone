@@ -1,0 +1,67 @@
+class Main
+!!!131202.java!!!	main(in args : String) : void
+        new Main().run();
+!!!131330.java!!!	init() : void
+
+        //crea un file di log
+        try {
+            log.addHandler(new FileHandler("log"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        log.setLevel(Level.INFO);
+
+        log.info("init database");
+        //Check Database - if not exist create one
+        database = new DatabaseManager();
+        
+        log.info("init sound");
+        soundManager = new SoundManager(PLAYBACK_FORMAT, 8);
+
+        log.info("init midi");
+        midiPlayer = new MidiPlayer();
+
+        log.info("init gamecore");
+        super.init();
+        
+        log.info("init input manager");
+        //inputManager = new InputManager(screen.getFullScreenWindow());
+        inputManager = new InputManager(screen.getWindow());
+        
+        log.info("init resource manager");
+        resourceManager = new ResourceManager(screen.getWindow().getGraphicsConfiguration(), soundManager, midiPlayer);
+
+        log.info("init game states");
+        gameStateManager = new GameStateManager(inputManager, resourceManager.loadImage("Splash.jpg"));
+        gameStateManager.addState(new MenuGameState(screen, soundManager,midiPlayer, database));
+        gameStateManager.addState(new StartGameState(screen, soundManager,midiPlayer, database));
+
+        // load resources (in separate thread)
+        new Thread() {
+            @Override
+            public void run() {
+                log.info("loading resources");
+                gameStateManager.loadAllResources(resourceManager);
+                log.info("setting to Loading State");
+                gameStateManager.setState("Menu");
+            }
+        }.start();
+
+!!!131458.java!!!	stop() : void
+        log.info("stopping game");
+        super.stop();
+        log.info("closing midi player");
+        midiPlayer.close();
+        log.info("closing sound manager");
+        soundManager.close();
+!!!131586.java!!!	update(in elapsedTime : long) : void
+        if (gameStateManager.isDone()) {
+            stop();
+        }
+        else {
+        // elapsedTime = timeSmoothie.getTime(elapsedTime);
+            gameStateManager.update(elapsedTime);
+        }
+!!!131714.java!!!	draw(inout g : Graphics2D) : void
+        gameStateManager.draw(g);

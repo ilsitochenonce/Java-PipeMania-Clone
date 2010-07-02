@@ -1,0 +1,1383 @@
+format 66
+"states" // src::ros::game::impl::states
+  revision 2
+  modified_by 2 "ros"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default show_stereotype_properties default
+  
+  java_dir "ros/game/impl/states"
+  java_package "ros.game.impl.states"
+  classview 129154 "states"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    class 132866 "MenuGameState"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 132482 // <realization>
+	relation 132482 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132482 // <realization>
+	  b parent class_ref 128386 // GameState
+      end
+
+      classrelation 132610 // <realization>
+	relation 132610 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132610 // <realization>
+	  b parent class_ref 131842 // ActionListener
+      end
+
+      attribute 139266 "stateChange"
+	private explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 132738 // screen (<unidirectional association>)
+	relation 132738 --->
+	  a role_name "screen" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 132738 // screen (<unidirectional association>)
+	  b parent class_ref 128258 // WindowedScreenManager
+      end
+
+      classrelation 132866 // sound (<unidirectional association>)
+	relation 132866 --->
+	  a role_name "sound" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 132866 // sound (<unidirectional association>)
+	  b parent class_ref 129026 // SoundManager
+      end
+
+      classrelation 132994 // music (<unidirectional association>)
+	relation 132994 --->
+	  a role_name "music" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 132994 // music (<unidirectional association>)
+	  b parent class_ref 129154 // MidiPlayer
+      end
+
+      classrelation 133122 // database (<unidirectional association>)
+	relation 133122 --->
+	  a role_name "database" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 133122 // database (<unidirectional association>)
+	  b parent class_ref 129282 // DatabaseManager
+      end
+
+      attribute 139394 "musica"
+	private explicit_type "Sequence"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Music"
+      end
+
+      classrelation 133250 // btnSound (<unidirectional association>)
+	relation 133250 --->
+	  a role_name "btnSound" private
+	    comment "sound
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 133250 // btnSound (<unidirectional association>)
+	  b parent class_ref 129666 // Sound
+      end
+
+      attribute 139522 "backImage"
+	private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Background and Menu button Images"
+      end
+
+      attribute 139650 "buttonImage"
+	private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 139778 "buttonSpace"
+	private explicit_type "JPanel"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Menu Buttons and Actions"
+      end
+
+      attribute 139906 "playButton"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "0"
+      end
+
+      attribute 140034 "configButton"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "1"
+      end
+
+      attribute 140162 "top15Button"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "2"
+      end
+
+      attribute 140290 "quitButton"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "3"
+      end
+
+      classrelation 133378 // ShowConfigAction (<unidirectional association>)
+	relation 133378 --->
+	  a role_name "ShowConfigAction" protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 133378 // ShowConfigAction (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 133506 // showTop15Action (<unidirectional association>)
+	relation 133506 --->
+	  a role_name "showTop15Action" protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 133506 // showTop15Action (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 133634 // playAction (<unidirectional association>)
+	relation 133634 --->
+	  a role_name "playAction" protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 133634 // playAction (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 133762 // quitAction (<unidirectional association>)
+	relation 133762 --->
+	  a role_name "quitAction" protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 133762 // quitAction (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      attribute 140418 "top15Panel"
+	private explicit_type "JPanel"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Score Panel Button and Action (for show High Score)"
+      end
+
+      attribute 140546 "scroll"
+	private explicit_type "JScrollPane"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140674 "centerPanel"
+	private explicit_type "JPanel"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140802 "hideHighScoreBtn"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 133890 // hideTop15Action (<unidirectional association>)
+	relation 133890 --->
+	  a role_name "hideTop15Action" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 133890 // hideTop15Action (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      attribute 140930 "configPanel"
+	private explicit_type "JPanel"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Config Panel Button and Action (for set music and sound)"
+      end
+
+      attribute 141058 "hideConfigBtn"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 141186 "toggleMusicBtn"
+	private explicit_type "JToggleButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 141314 "toggleSoundBtn"
+	private explicit_type "JToggleButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 134018 // toggleMusicAction (<unidirectional association>)
+	relation 134018 --->
+	  a role_name "toggleMusicAction" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 134018 // toggleMusicAction (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 134146 // toggleSoundAction (<unidirectional association>)
+	relation 134146 --->
+	  a role_name "toggleSoundAction" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 134146 // toggleSoundAction (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 134274 // hideConfigAction (<unidirectional association>)
+	relation 134274 --->
+	  a role_name "hideConfigAction" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 134274 // hideConfigAction (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      operation 152066 "MenuGameState"
+	public explicit_return_type ""
+	nparams 4
+	  param inout name "screen" type class_ref 128258 // WindowedScreenManager
+	  param inout name "soundManager" type class_ref 129026 // SoundManager
+	  param inout name "midiPlayer" type class_ref 129154 // MidiPlayer
+	  param inout name "database" type class_ref 129282 // DatabaseManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 152194 "getName"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 152322 "checkForStateChange"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 152450 "loadResources"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "resourceManager" type class_ref 128514 // ResourceManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 152578 "start"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "inputManager" type class_ref 128642 // InputManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 152706 "stop"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 152834 "update"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "elapsedTime" explicit_type "long"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 152962 "draw"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "g" explicit_type "Graphics2D"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 153090 "createButton"
+	public explicit_return_type "JButton"
+	nparams 3
+	  param in name "name" explicit_type "String"
+	  param in name "toolTip" explicit_type "String"
+	  param in name "indexImage" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "  Creates a Swing JButton. The image used for the button is
+  located at \"../images/menu/\" + name + \".png\". The image is
+  modified to create a \"default\" look (translucent) and a
+  \"pressed\" look (moved down and to the right).
+  <p>The button doesn't use Swing's look-and-feel and
+  instead just uses the image."
+      end
+
+      operation 153218 "actionPerformed"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "ActionEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Called by the AWT event dispatch thread when a button is
+pressed."
+      end
+
+      operation 153346 "checkInput"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 153474 "createConfigPanel"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 153602 "createHighScorePanel"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 153730 "initGameActions"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      classrelation 145154 // <association>
+	relation_ref 144770 // <association>
+      end
+    end
+
+    class 132994 "StartGameState"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "
+@author Ros"
+      classrelation 134402 // <realization>
+	relation 134402 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 134402 // <realization>
+	  b parent class_ref 128386 // GameState
+      end
+
+      classrelation 134530 // <realization>
+	relation 134530 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 134530 // <realization>
+	  b parent class_ref 131842 // ActionListener
+      end
+
+      attribute 141442 "SHOW_STARTING_LEVEL"
+	class_attribute const_attribute public explicit_type "byte"
+	init_value "=  0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "SUBSTATES
+visualizza dialogo \"Level starting\""
+      end
+
+      attribute 141570 "IN_GAME_BRIEFING"
+	class_attribute const_attribute public explicit_type "byte"
+	init_value "=  1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "livello iniziato - acqua non ancora nella BOARD"
+      end
+
+      attribute 141698 "IN_GAME_NOBRIEFING"
+	class_attribute const_attribute public explicit_type "byte"
+	init_value "=  2"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "livello iniziato - acqua nella BOARD"
+      end
+
+      attribute 141826 "SHOW_GAME_OVER"
+	class_attribute const_attribute public explicit_type "byte"
+	init_value "=  3"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "L'acqua non puo' continuare il flusso"
+      end
+
+      attribute 141954 "SHOW_FINISH_LEVEL"
+	class_attribute const_attribute public explicit_type "byte"
+	init_value "=  4"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "l'acqua è arrivata alla tile di fine"
+      end
+
+      attribute 142082 "STORE_GAME_SCORE"
+	class_attribute const_attribute public explicit_type "byte"
+	init_value "=  5"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Memorizza il punteggio"
+      end
+
+      attribute 142210 "ACCELERATED_GAME"
+	class_attribute const_attribute public explicit_type "byte"
+	init_value "=  6"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "accellera il tempo di casella e salta l'input"
+      end
+
+      attribute 142338 "EXIT_GAME"
+	class_attribute const_attribute public explicit_type "byte"
+	init_value "=  7"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "ferma i timer e salta l'input (visualizza un dialogo per l'uscita)"
+      end
+
+      attribute 142466 "currentSubState"
+	private explicit_type "byte"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 134658 // screen (<unidirectional association>)
+	relation 134658 --->
+	  a role_name "screen" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 134658 // screen (<unidirectional association>)
+	  b parent class_ref 128258 // WindowedScreenManager
+      end
+
+      classrelation 134786 // sound (<unidirectional association>)
+	relation 134786 --->
+	  a role_name "sound" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 134786 // sound (<unidirectional association>)
+	  b parent class_ref 129026 // SoundManager
+      end
+
+      classrelation 134914 // music (<unidirectional association>)
+	relation 134914 --->
+	  a role_name "music" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 134914 // music (<unidirectional association>)
+	  b parent class_ref 129154 // MidiPlayer
+      end
+
+      attribute 142594 "sfondi"
+	private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 142722 "done"
+	private explicit_type "boolean"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 142850 "punteggio"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 142978 "livelloCorrente"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 135042 // briefingBar (<unidirectional association>)
+	relation 135042 --->
+	  a role_name "briefingBar" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135042 // briefingBar (<unidirectional association>)
+	  b parent class_ref 132482 // BriefingProgressBar
+      end
+
+      classrelation 135170 // board (<unidirectional association>)
+	relation 135170 --->
+	  a role_name "board" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135170 // board (<unidirectional association>)
+	  b parent class_ref 131714 // Board
+      end
+
+      classrelation 135298 // tileGenerator (<unidirectional association>)
+	relation 135298 --->
+	  a role_name "tileGenerator" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135298 // tileGenerator (<unidirectional association>)
+	  b parent class_ref 132226 // TileLoaderAndFactory
+      end
+
+      classrelation 135426 // startLevelDialog (<unidirectional association>)
+	relation 135426 --->
+	  a role_name "startLevelDialog" private
+	    comment "dialoghi e Action dei dialoghi
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135426 // startLevelDialog (<unidirectional association>)
+	  b parent class_ref 133122 // StartLevelDialog
+      end
+
+      classrelation 135554 // okShowStartLevelDialogAction (<unidirectional association>)
+	relation 135554 --->
+	  a role_name "okShowStartLevelDialogAction" protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135554 // okShowStartLevelDialogAction (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 135682 // pauseLevelDialog (<unidirectional association>)
+	relation 135682 --->
+	  a role_name "pauseLevelDialog" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135682 // pauseLevelDialog (<unidirectional association>)
+	  b parent class_ref 133250 // PauseLevelDialog
+      end
+
+      classrelation 135810 // esciPauseLevelDialog (<unidirectional association>)
+	relation 135810 --->
+	  a role_name "esciPauseLevelDialog" protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135810 // esciPauseLevelDialog (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 135938 // gameOverLevelDialog (<unidirectional association>)
+	relation 135938 --->
+	  a role_name "gameOverLevelDialog" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135938 // gameOverLevelDialog (<unidirectional association>)
+	  b parent class_ref 133378 // GameOverLevelDialog
+      end
+
+      classrelation 136066 // continuaGameOverLevelDialog (<unidirectional association>)
+	relation 136066 --->
+	  a role_name "continuaGameOverLevelDialog" protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136066 // continuaGameOverLevelDialog (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 136194 // storePointsLevelDialog (<unidirectional association>)
+	relation 136194 --->
+	  a role_name "storePointsLevelDialog" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136194 // storePointsLevelDialog (<unidirectional association>)
+	  b parent class_ref 133506 // StorePointsLevelDialog
+      end
+
+      classrelation 136322 // memPunteggioEContinuaStoreLevelDialog (<unidirectional association>)
+	relation 136322 --->
+	  a role_name "memPunteggioEContinuaStoreLevelDialog" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136322 // memPunteggioEContinuaStoreLevelDialog (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 136450 // livelloFinitoDialog (<unidirectional association>)
+	relation 136450 --->
+	  a role_name "livelloFinitoDialog" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136450 // livelloFinitoDialog (<unidirectional association>)
+	  b parent class_ref 133634 // LivelloCompletatoDialog
+      end
+
+      classrelation 136578 // continuaLivelloCompletatoDialog (<unidirectional association>)
+	relation 136578 --->
+	  a role_name "continuaLivelloCompletatoDialog" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136578 // continuaLivelloCompletatoDialog (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 136706 // mouseClickAction (<unidirectional association>)
+	relation 136706 --->
+	  a role_name "mouseClickAction" private
+	    comment "eventi
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136706 // mouseClickAction (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 136834 // mouseClickAction2 (<unidirectional association>)
+	relation 136834 --->
+	  a role_name "mouseClickAction2" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136834 // mouseClickAction2 (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      attribute 143106 "esciButton"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 136962 // escPressAction (<unidirectional association>)
+	relation 136962 --->
+	  a role_name "escPressAction" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136962 // escPressAction (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      attribute 143234 "acceleraButton"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 137090 // invioPressAction (<unidirectional association>)
+	relation 137090 --->
+	  a role_name "invioPressAction" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137090 // invioPressAction (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 137218 // timerAction (<unidirectional association>)
+	relation 137218 --->
+	  a role_name "timerAction" private
+	    comment "
+l'azione che indica la fine del tempo di briefing
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137218 // timerAction (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 137346 // casellaFinitaAction (<unidirectional association>)
+	relation 137346 --->
+	  a role_name "casellaFinitaAction" private
+	    comment "
+l'azione che indica il passaggio da una casella ad un'altra
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137346 // casellaFinitaAction (<unidirectional association>)
+	  b parent class_ref 130306 // GameAction
+      end
+
+      classrelation 137474 // inputManager (<unidirectional association>)
+	relation 137474 --->
+	  a role_name "inputManager" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137474 // inputManager (<unidirectional association>)
+	  b parent class_ref 128642 // InputManager
+      end
+
+      attribute 143362 "buttonImage"
+	private explicit_type "Image"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "immagini e pannello dei bottoni"
+      end
+
+      attribute 143490 "buttonSpace"
+	private explicit_type "JPanel"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 137602 // database (<unidirectional association>)
+	relation 137602 --->
+	  a role_name "database" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137602 // database (<unidirectional association>)
+	  b parent class_ref 129282 // DatabaseManager
+      end
+
+      attribute 143618 "baseBottoni_Tile"
+	private explicit_type "Image"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 137730 // lascia (<unidirectional association>)
+	relation 137730 --->
+	  a role_name "lascia" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137730 // lascia (<unidirectional association>)
+	  b parent class_ref 129666 // Sound
+      end
+
+      classrelation 137858 // piazza (<unidirectional association>)
+	relation 137858 --->
+	  a role_name "piazza" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137858 // piazza (<unidirectional association>)
+	  b parent class_ref 129666 // Sound
+      end
+
+      classrelation 137986 // ok (<unidirectional association>)
+	relation 137986 --->
+	  a role_name "ok" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137986 // ok (<unidirectional association>)
+	  b parent class_ref 129666 // Sound
+      end
+
+      attribute 143746 "musica"
+	private explicit_type "Sequence"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 153858 "goToNextLevel"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Va al prossimo livello"
+      end
+
+      operation 153986 "start"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "inputManager" type class_ref 128642 // InputManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "La funzione viene chiamata quando il gioco entra nello stato StartGameState
+
+@param inputManager"
+      end
+
+      operation 154114 "StartGameState"
+	public explicit_return_type ""
+	nparams 4
+	  param inout name "screen" type class_ref 128258 // WindowedScreenManager
+	  param inout name "soundManager" type class_ref 129026 // SoundManager
+	  param inout name "midiPlayer" type class_ref 129154 // MidiPlayer
+	  param inout name "database" type class_ref 129282 // DatabaseManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Costruttore<br>
+inizializza il GameState e le suoe componenti interne:<br>
+<ul>
+<li>TileGenerator</li>
+<li>LevelData</li>
+<li>Board</li>
+<li>PreviewTiles</li>
+<li>ProgressBar</li>
+</ul>
+@param screen
+@param soundManager
+@param midiPlayer"
+      end
+
+      operation 154242 "createUI"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Crea i dialoghi e le altre interfacce grafiche"
+      end
+
+      operation 154370 "getName"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 154498 "checkForStateChange"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 154626 "loadResources"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "resourceManager" type class_ref 128514 // ResourceManager
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 154754 "stop"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 154882 "draw"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "g" explicit_type "Graphics2D"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 155010 "createDialogs"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 155138 "initGameAction"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 155266 "actionPerformed"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "ActionEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Called by the AWT event dispatch thread when a button is
+pressed."
+      end
+
+      operation 155394 "update"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "elapsedTime" explicit_type "long"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 155522 "checkInput"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 155650 "createButton"
+	public explicit_return_type "JButton"
+	nparams 3
+	  param in name "name" explicit_type "String"
+	  param in name "toolTip" explicit_type "String"
+	  param in name "indexImage" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Creates a Swing JButton. The image used for the button is
+located at \"../images/menu/\" + name + \".png\". The image is
+modified to create a \"default\" look (translucent) and a
+\"pressed\" look (moved down and to the right).
+<p>The button doesn't use Swing's look-and-feel and
+instead just uses the image."
+      end
+    end
+  end
+
+  deploymentview 128898 "states"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    artifact 131074 "MenuGameState"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import ros.game.engine.ResourceManager;
+import java.awt.AlphaComposite;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Composite;
+import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Transparency;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.sound.midi.Sequence;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JToggleButton;
+import javax.swing.border.Border;
+import ros.game.engine.WindowedScreenManager;
+import ros.game.engine.database.DatabaseManager;
+import ros.game.engine.input.GameAction;
+import ros.game.engine.input.InputManager;
+import ros.game.engine.sound.MidiPlayer;
+import ros.game.engine.sound.Sound;
+import ros.game.engine.sound.SoundManager;
+import ros.game.engine.GameState;
+import ros.game.engine.GameStateManager;
+${definition}"
+      associated_classes
+	class_ref 132866 // MenuGameState
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+
+    artifact 131202 "StartGameState"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import ros.game.engine.ResourceManager;
+import java.awt.AlphaComposite;
+import java.awt.Composite;
+import java.awt.Container;
+import java.awt.Cursor;
+import javax.sound.midi.Sequence;
+import ros.game.impl.tiles.TileLoaderAndFactory;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import ros.game.engine.sound.Sound;
+import ros.game.util.Utils;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Transparency;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import ros.game.engine.WindowedScreenManager;
+import ros.game.engine.database.DatabaseManager;
+import ros.game.impl.states.dialogs.GameOverLevelDialog;
+import ros.game.impl.states.dialogs.LivelloCompletatoDialog;
+import ros.game.impl.states.dialogs.PauseLevelDialog;
+import ros.game.impl.states.dialogs.StartLevelDialog;
+import ros.game.impl.states.dialogs.StorePointsLevelDialog;
+import ros.game.engine.input.GameAction;
+import ros.game.engine.input.InputManager;
+import ros.game.impl.Board;
+import ros.game.impl.BriefingProgressBar;
+import ros.game.engine.sound.MidiPlayer;
+import ros.game.engine.sound.SoundManager;
+import ros.game.engine.GameState;
+${definition}"
+      associated_classes
+	class_ref 132994 // StartGameState
+      end
+      comment "To change this template, choose Tools | Templates
+and open the template in the editor."
+    end
+  end
+
+  package_ref 129666 // dialogs
+end

@@ -1,49 +1,17 @@
-package ros.game.engine;
-
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.util.*;
-import ros.game.engine.input.InputManager;
-
-public class GameStateManager {
-
-    public static final String EXIT_GAME = "_ExitGame";
-    private Image defaultImage;
-    public static final String loading = "Caricamento...";
-    
-    private Map gameStates;
-    private GameState currentState;
-    private InputManager inputManager;
-    private boolean done;
-
-    //for random coloring loading tring
-    Random r;
-    private boolean resourcesLoaded = false;
-
-    public GameStateManager(InputManager inputManager,
-        Image defaultImage)
-    {
+class GameStateManager
+!!!130050.java!!!	GameStateManager(inout inputManager : InputManager, inout defaultImage : Image)
         this.inputManager = inputManager;
         this.defaultImage = defaultImage;
         gameStates = new HashMap();
 
         r = new Random();
-    }
-
-    public void addState(GameState state) {
+!!!130178.java!!!	addState(inout state : GameState) : void
         gameStates.put(state.getName(), state);
-    }
-
-    public boolean resourcesLoaded(){
+!!!130306.java!!!	resourcesLoaded() : boolean
         return resourcesLoaded;
-    }
-
-    public Iterator getStates() {
+!!!130434.java!!!	getStates() : Iterator
         return gameStates.values().iterator();
-    }
-
-    public void loadAllResources(ResourceManager resourceManager) {
+!!!130562.java!!!	loadAllResources(inout resourceManager : ResourceManager) : void
         Iterator i = getStates();
         while (i.hasNext()) {
             GameState gameState = (GameState)i.next();
@@ -51,18 +19,9 @@ public class GameStateManager {
         }
 
         resourcesLoaded = true;
-    }
-
-
-    public boolean isDone() {
+!!!130690.java!!!	isDone() : boolean
         return done;
-    }
-
-
-    /**
-        Sets the current state (by name).
-    */
-    public void setState(String name) {
+!!!130818.java!!!	setState(in name : String) : void
         // clean up old state
         System.out.println("setState("+name+")" + " PreviousState: " + currentState);
         if (currentState != null) {
@@ -83,13 +42,7 @@ public class GameStateManager {
                 System.out.println("Stato "+name+" non trovato");
             }
         }
-    }
-
-
-    /**
-        Updates world, handles input.
-    */
-    public void update(long elapsedTime) {
+!!!130946.java!!!	update(in elapsedTime : long) : void
         // if no state, pause a short time
         if (currentState == null) {
             try {
@@ -106,12 +59,7 @@ public class GameStateManager {
                 currentState.update(elapsedTime);
             }
         }
-    }
-
-    /**
-        Draws to the screen.
-    */
-    public void draw(Graphics2D g) {
+!!!131074.java!!!	draw(inout g : Graphics2D) : void
         if (currentState != null) {
             currentState.draw(g);
         }
@@ -123,5 +71,3 @@ public class GameStateManager {
             g.setColor(new Color(Math.abs(r.nextInt()%255),Math.abs(r.nextInt()%255),Math.abs(r.nextInt()%255)));
             g.drawString(loading, 470, 200);
         }
-    }
-}

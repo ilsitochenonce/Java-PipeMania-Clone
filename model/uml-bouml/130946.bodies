@@ -1,0 +1,35 @@
+class PooledThread
+!!!144258.java!!!	PooledThread()
+
+            super(ThreadPool.this,
+                "PooledThread-" + (threadID++));
+!!!144386.java!!!	run() : void
+
+            // signal that this thread has started
+            threadStarted();
+
+            while (!isInterrupted()) {
+
+                // get a task to run
+                Runnable task = null;
+                try {
+                    task = getTask();
+                }
+                catch (InterruptedException ex) { }
+
+                // if getTask() returned null or was interrupted,
+                // close this thread.
+                if (task == null) {
+                    break;
+                }
+
+                // run the task, and eat any exceptions it throws
+                try {
+                    task.run();
+                }
+                catch (Throwable t) {
+                    uncaughtException(this, t);
+                }
+            }
+            // signal that this thread has stopped
+            threadStopped();

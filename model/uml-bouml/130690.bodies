@@ -1,0 +1,62 @@
+class ThreadPool
+!!!143362.java!!!	ThreadPool(in numThreads : int)
+
+        super("ThreadPool-" + (threadPoolID++));
+        setDaemon(true);
+
+        isAlive = true;
+
+        taskQueue = new LinkedList();
+        for (int i=0; i<numThreads; i++) {
+            new PooledThread().start();
+        }
+!!!143490.java!!!	runTask(inout task : Runnable) : void
+
+        if (!isAlive) {
+            throw new IllegalStateException();
+        }
+        if (task != null) {
+            taskQueue.add(task);
+            notify();
+        }
+
+!!!143618.java!!!	getTask() : Runnable
+
+        while (taskQueue.size() == 0) {
+            if (!isAlive) {
+                return null;
+            }
+            wait();
+        }
+        return (Runnable)taskQueue.removeFirst();
+!!!143746.java!!!	close() : void
+
+        if (isAlive) {
+            isAlive = false;
+            taskQueue.clear();
+            interrupt();
+        }
+!!!143874.java!!!	join() : void
+
+        // notify all waiting threads that this ThreadPool is no
+        // longer alive
+        synchronized (this) {
+            isAlive = false;
+            notifyAll();
+        }
+
+        // wait for all threads to finish
+        Thread[] threads = new Thread[activeCount()];
+        int count = enumerate(threads);
+        for (int i=0; i<count; i++) {
+            try {
+                threads[i].join();
+            }
+            catch (InterruptedException ex) { }
+        }
+!!!144002.java!!!	threadStarted() : void
+
+        // do nothing
+!!!144130.java!!!	threadStopped() : void
+
+        // do nothing

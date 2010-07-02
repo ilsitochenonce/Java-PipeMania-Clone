@@ -1,0 +1,35 @@
+format 66
+
+packagecanvas 128002 
+  package_ref 128514 // engine
+    xyzwh 48 61 2000 293 151
+end
+packagecanvas 128130 
+  package_ref 128642 // input
+    xyzwh 65 104 2005 64 75
+end
+packagecanvas 128258 
+  package_ref 128770 // sound
+    xyzwh 157 104 2005 64 75
+end
+packagecanvas 128386 
+  package_ref 128898 // database
+    xyzwh 250 104 2005 64 75
+end
+packagecanvas 128514 
+  package_ref 128386 // game
+    xyzwh 20 12 2000 416 411
+end
+packagecanvas 128642 
+  package_ref 129282 // impl
+    xyzwh 49 230 2005 297 180
+end
+packagecanvas 128770 
+  package_ref 129538 // states
+    xyzwh 236 311 2010 65 75
+end
+packagecanvas 128898 
+  package_ref 129410 // tiles
+    xyzwh 97 308 2010 65 75
+end
+end

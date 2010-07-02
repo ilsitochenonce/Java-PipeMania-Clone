@@ -1,14 +1,6 @@
 package ros.game.engine;
 
-import ros.game.engine.ResourceManager;
-import java.awt.AlphaComposite;
-import java.awt.Composite;
-import java.awt.Cursor;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Transparency;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import ros.game.engine.input.InputManager;
 
 /**

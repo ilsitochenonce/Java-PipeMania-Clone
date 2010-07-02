@@ -40,9 +40,33 @@ public class Board implements ActionListener{
     
     private Tile[][] board;
     private PreviewTiles preview;
-    private casellaTimesLevelsData datiTempoLivelli;
+    private final TileLoaderAndFactory tileGen;
+    private CasellaTimesLevelsData datiTempoLivelli;
+    
     private Timer timerCasella;
+    private GameAction casellaFinitaAction;
+    /**
+     * indici tile corrente (Il tile corrente è il tile in attraversamento)
+     */
+    private Point tileCorrenteIndex;
+    //le coordinate del tile di inizio
+    private Point startTileIndex;
+    //le coordinate del tile di fine
+    private Point endTileIndex;
+    /**
+     * Le coordinate del tile sotto il mouse (vale (-1,-1) se il mouse non è sopra nessun tile)
+     */
+    private Point tileSottoIlMouseIndex;
 
+    /**
+     * TempoCasella nel caso sia abilitata l'accelerazione
+     */
+    private final int acceleredTimerDelay = 500;
+    /**
+     * variabile utile per memorizzare il punteggio delle tile attraversate
+     */
+    private int punteggioUltimaTileAttraversata; 
+    
     /**
      * vettori di utilità per calcolare la posizione dei Tile di inizio e fine
      */
@@ -56,26 +80,6 @@ public class Board implements ActionListener{
      */
     private Random r;
 
-    /**
-     * coordinate tile corrente (Il tile corrente è il tile in attraversamento)
-     */
-    private Point tileCorrentePoint;
-    //le coordinate del tile di inizio
-    private Point startTilePoint;
-    //le coordinate del tile di fine
-    private Point endTilePoint;
-    /**
-     * Le coordinate del tile sotto il mouse (vale (-1,-1) se il mouse non è sopra nessun tile)
-     */
-    private Point tileSottoIlMousePoint;
-    
-    private final TileLoaderAndFactory tileGen;
-
-    private int acceleredTimerDelay = 500;
-    
-    private GameAction casellaFinitaAction;
-
-    private int punteggioUltimaTileAttraversata; // per memorizzare il punteggio delle tile attraversate
     public Board(TileLoaderAndFactory tileGenerator) {
 
         punteggioUltimaTileAttraversata = 0;
@@ -83,14 +87,14 @@ public class Board implements ActionListener{
         timerCasella = new Timer(0, this);
 
         //make tmpbriefing and casellatime
-        datiTempoLivelli = new casellaTimesLevelsData();
+        datiTempoLivelli = new CasellaTimesLevelsData();
 
         this.preview = new PreviewTiles(tileGenerator);
         
-        tileCorrentePoint = new Point(-1,-1);
-        startTilePoint = new Point(-1,-1);
-        endTilePoint = new Point(-1,-1);
-        tileSottoIlMousePoint = new Point(-1,-1);
+        tileCorrenteIndex = new Point(-1,-1);
+        startTileIndex = new Point(-1,-1);
+        endTileIndex = new Point(-1,-1);
+        tileSottoIlMouseIndex = new Point(-1,-1);
         
         r = new Random();
         
@@ -104,7 +108,7 @@ public class Board implements ActionListener{
         //disegno le tile
         for (int x = 0; x < COLONNE; x++) {
             for (int y = 0; y < RIGHE; y++) {
-                if (tileCorrentePoint.x == x && tileCorrentePoint.y == y) {
+                if (tileCorrenteIndex.x == x && tileCorrenteIndex.y == y) {
                     board[x][y].draw(g, (x * TILE_SIZEX) + BOARD_BASEX, (y * TILE_SIZEY) + BOARD_BASEY, true, timerCasella.getDelay());
                 } else {
                     board[x][y].draw(g, (x * TILE_SIZEX) + BOARD_BASEX, (y * TILE_SIZEY) + BOARD_BASEY, false, 0);
@@ -113,11 +117,11 @@ public class Board implements ActionListener{
         }
         
         //disegno la tile sottoilmouse
-        if (tileSottoIlMousePoint.x != -1 & tileSottoIlMousePoint.y != -1) {
-            if (board[tileSottoIlMousePoint.x][tileSottoIlMousePoint.y].isReplaceable())//se la tile sotto il mouse è sostituibile
+        if (tileSottoIlMouseIndex.x != -1 & tileSottoIlMouseIndex.y != -1) {
+            if (board[tileSottoIlMouseIndex.x][tileSottoIlMouseIndex.y].isReplaceable())//se la tile sotto il mouse è sostituibile
             {
-                if(!tileSottoIlMousePoint.equals(tileCorrentePoint)){ //se non è il tile corrente
-                    preview.drawNextTile(g, (tileSottoIlMousePoint.x * TILE_SIZEX) + BOARD_BASEX, (tileSottoIlMousePoint.y * TILE_SIZEY) + BOARD_BASEY);
+                if(!tileSottoIlMouseIndex.equals(tileCorrenteIndex)){ //se non è il tile corrente
+                    preview.drawNextTile(g, (tileSottoIlMouseIndex.x * TILE_SIZEX) + BOARD_BASEX, (tileSottoIlMouseIndex.y * TILE_SIZEY) + BOARD_BASEY);
                 }
             }
         }
@@ -140,7 +144,7 @@ public class Board implements ActionListener{
             }
         }
 
-        tileCorrentePoint = new Point(-1,-1);
+        tileCorrenteIndex = new Point(-1,-1);
         
         Vector<Point> copiaDestro = (Vector<Point>) this.BORDODESTRO.clone();
         Vector<Point> copiaSinistro = (Vector<Point>) this.BORDOSINISTRO.clone();
@@ -151,60 +155,60 @@ public class Board implements ActionListener{
         Tile startTile = tileGen.getRandomStartTile();
         if(startTile.getTipo() == TileLoaderAndFactory.START_TILE_DESTRA){
             //se lo startTile va verso destra escludo il bordo destro
-            startTilePoint = getRandomBoardPosition(this.BORDODESTRO);
+            startTileIndex = getRandomBoardPosition(this.BORDODESTRO);
         }
         else if(startTile.getTipo() == TileLoaderAndFactory.START_TILE_SINISTRA){
-            startTilePoint = getRandomBoardPosition(this.BORDOSINISTRO);
+            startTileIndex = getRandomBoardPosition(this.BORDOSINISTRO);
         }
         else if(startTile.getTipo() == TileLoaderAndFactory.START_TILE_SOPRA){
-            startTilePoint = getRandomBoardPosition(this.BORDOSUPERIORE);
+            startTileIndex = getRandomBoardPosition(this.BORDOSUPERIORE);
         }
         else{
-            startTilePoint = getRandomBoardPosition(this.BORDOINFERIORE);
+            startTileIndex = getRandomBoardPosition(this.BORDOINFERIORE);
         }
-        this.board[startTilePoint.x][startTilePoint.y] = startTile;
+        this.board[startTileIndex.x][startTileIndex.y] = startTile;
 
         //imposta un punto di fine
         Tile endTile = tileGen.getRandomEndTile();
         if(endTile.getTipo() == TileLoaderAndFactory.END_TILE_DESTRA){
             //dovrò escludere il bordo + il punto di start + il punto di fronte a start
-            copiaDestro.add(startTilePoint);
-            Point[] dascartare = tileIntorno(startTilePoint);
+            copiaDestro.add(startTileIndex);
+            Point[] dascartare = tileIntorno(startTileIndex);
             for(int i=0;i<dascartare.length;i++)
                 copiaDestro.add(dascartare[i]);
-            endTilePoint = getRandomBoardPosition(copiaDestro);
+            endTileIndex = getRandomBoardPosition(copiaDestro);
         }
         else if(endTile.getTipo() == TileLoaderAndFactory.END_TILE_SINISTRA){    
-            copiaSinistro.add(startTilePoint);
-            Point[] dascartare = tileIntorno(startTilePoint);
+            copiaSinistro.add(startTileIndex);
+            Point[] dascartare = tileIntorno(startTileIndex);
             for(int i=0;i<dascartare.length;i++)
                 copiaSinistro.add(dascartare[i]);
-            endTilePoint = getRandomBoardPosition(copiaSinistro);
+            endTileIndex = getRandomBoardPosition(copiaSinistro);
         }
         else if(endTile.getTipo() == TileLoaderAndFactory.END_TILE_SOPRA){
-            copiaSuperiore.add(startTilePoint);
-            Point[] dascartare = tileIntorno(startTilePoint);
+            copiaSuperiore.add(startTileIndex);
+            Point[] dascartare = tileIntorno(startTileIndex);
             for(int i=0;i<dascartare.length;i++)
                 copiaSuperiore.add(dascartare[i]);
-            endTilePoint = getRandomBoardPosition(copiaSuperiore);
+            endTileIndex = getRandomBoardPosition(copiaSuperiore);
         }
         else{
-            copiaInferiore.add(startTilePoint);
-            Point[] dascartare = tileIntorno(startTilePoint);
+            copiaInferiore.add(startTileIndex);
+            Point[] dascartare = tileIntorno(startTileIndex);
             for(int i=0;i<dascartare.length;i++)
                 copiaInferiore.add(dascartare[i]);
-            endTilePoint = getRandomBoardPosition(copiaInferiore);
+            endTileIndex = getRandomBoardPosition(copiaInferiore);
         }
-        this.board[endTilePoint.x][endTilePoint.y] = endTile;
+        this.board[endTileIndex.x][endTileIndex.y] = endTile;
 
         if(level >= 21 & level <= 30){
             Vector<Point> StartEndDaScartare = new Vector<Point>();
-            StartEndDaScartare.add(startTilePoint);
-            StartEndDaScartare.add(endTilePoint);
-            Point[] dascartare = tileIntorno(startTilePoint);
+            StartEndDaScartare.add(startTileIndex);
+            StartEndDaScartare.add(endTileIndex);
+            Point[] dascartare = tileIntorno(startTileIndex);
             for(int i=0;i<dascartare.length;i++)
                 StartEndDaScartare.add(dascartare[i]);
-            dascartare = tileIntorno(endTilePoint);
+            dascartare = tileIntorno(endTileIndex);
             for(int i=0;i<dascartare.length;i++)
                 StartEndDaScartare.add(dascartare[i]);
             
@@ -217,7 +221,7 @@ public class Board implements ActionListener{
         }
         preview.initForStartingLevel(level);
 
-        Logger.getLogger(Main.LOGGER_NAME).log(Level.INFO, "EndTile: "+endTilePoint+"StartTile: "+startTilePoint);
+        Logger.getLogger(Main.LOGGER_NAME).log(Level.INFO, "EndTile: "+endTileIndex+"StartTile: "+startTileIndex);
     }
     
     /**
@@ -290,26 +294,27 @@ public class Board implements ActionListener{
     }
 
     /**
+     * Trasforma le coordinate schermo in un indice di Tile
      * 
-     * @param compCoord
+     * @param mouseCoordinate
      * @return l'indice della board o (-1,-1) se le coordinate sono fuori
      */
-    private Point componetnCoordinateToBoardIndex(Point compCoord){
-        if(compCoord == null)
+    private Point componetnCoordinateToBoardIndex(Point mouseCoordinate){
+        if(mouseCoordinate == null)
             return new Point(-1,-1);
-        if (compCoord.x >= BOARD_BASEX && compCoord.x <= BOARD_BASEX + COLONNE * TILE_SIZEX
-                && compCoord.y >= BOARD_BASEY && compCoord.y <= BOARD_BASEY + RIGHE * TILE_SIZEY) {
+        if (mouseCoordinate.x >= BOARD_BASEX && mouseCoordinate.x <= BOARD_BASEX + COLONNE * TILE_SIZEX
+                && mouseCoordinate.y >= BOARD_BASEY && mouseCoordinate.y <= BOARD_BASEY + RIGHE * TILE_SIZEY) {
             //il mouse è nella board: calcola l'indice del tile
             int xindex = -1;
             int yindex = -1;
             for (int x = 0; x < COLONNE; x++) {
-                if (compCoord.x < BOARD_BASEX + TILE_SIZEX * (x + 1)) {
+                if (mouseCoordinate.x < BOARD_BASEX + TILE_SIZEX * (x + 1)) {
                     xindex = x;
                     break;
                 }
             }
             for (int y = 0; y < RIGHE; y++) {
-                if (compCoord.y < BOARD_BASEY + TILE_SIZEY * (y + 1)) {
+                if (mouseCoordinate.y < BOARD_BASEY + TILE_SIZEY * (y + 1)) {
                     yindex = y;
                     break;
                 }
@@ -328,7 +333,7 @@ public class Board implements ActionListener{
      * @param mouseCoordinatePx
      */
     public void updateMousePosition(Point mouseCoordinate) {
-        tileSottoIlMousePoint = this.componetnCoordinateToBoardIndex(mouseCoordinate);
+        tileSottoIlMouseIndex = this.componetnCoordinateToBoardIndex(mouseCoordinate);
     }
 
     public void sostituisciTileSePossibile(Point clikedMousePosition) {
@@ -337,7 +342,7 @@ public class Board implements ActionListener{
         if (tileCliccata.x != -1) {
             if (board[tileCliccata.x][tileCliccata.y].isReplaceable())//se la tile sotto il mouse è sostituibile
             {
-                if (!tileCliccata.equals(tileCorrentePoint)) { //se non è il tile corrente
+                if (!tileCliccata.equals(tileCorrenteIndex)) { //se non è il tile corrente
                     board[tileCliccata.x][tileCliccata.y] = preview.getNextTile();
                 }
             }
@@ -377,11 +382,11 @@ public class Board implements ActionListener{
      * @return 
      */
     public boolean isEndTileReached(){
-        if(tileCorrentePoint.x != -1){
-            if(board[tileCorrentePoint.x][tileCorrentePoint.y].getTipo() == TileLoaderAndFactory.END_TILE_DESTRA |
-                board[tileCorrentePoint.x][tileCorrentePoint.y].getTipo() == TileLoaderAndFactory.END_TILE_SINISTRA |
-                board[tileCorrentePoint.x][tileCorrentePoint.y].getTipo() == TileLoaderAndFactory.END_TILE_SOPRA |
-                board[tileCorrentePoint.x][tileCorrentePoint.y].getTipo() == TileLoaderAndFactory.END_TILE_SOTTO){
+        if(tileCorrenteIndex.x != -1){
+            if(board[tileCorrenteIndex.x][tileCorrenteIndex.y].getTipo() == TileLoaderAndFactory.END_TILE_DESTRA |
+                board[tileCorrenteIndex.x][tileCorrenteIndex.y].getTipo() == TileLoaderAndFactory.END_TILE_SINISTRA |
+                board[tileCorrenteIndex.x][tileCorrenteIndex.y].getTipo() == TileLoaderAndFactory.END_TILE_SOPRA |
+                board[tileCorrenteIndex.x][tileCorrenteIndex.y].getTipo() == TileLoaderAndFactory.END_TILE_SOTTO){
             stopTimerCasella();
             return true;
         }
@@ -404,18 +409,18 @@ public class Board implements ActionListener{
      */
     public boolean goToNextTile() {
 
-        if (tileCorrentePoint.x == -1) { //se è il primo tile
-            tileCorrentePoint = startTilePoint;
-            board[tileCorrentePoint.x][tileCorrentePoint.y].aggiungiAttraversamento(null);
-            punteggioUltimaTileAttraversata = board[tileCorrentePoint.x][tileCorrentePoint.y].getPunteggio();
+        if (tileCorrenteIndex.x == -1) { //se è il primo tile
+            tileCorrenteIndex = startTileIndex;
+            board[tileCorrenteIndex.x][tileCorrenteIndex.y].aggiungiAttraversamento(null);
+            punteggioUltimaTileAttraversata = board[tileCorrenteIndex.x][tileCorrenteIndex.y].getPunteggio();
             return true;
         } else {
-            WaterDirection uscita = board[tileCorrentePoint.x][tileCorrentePoint.y].getdirezioneDiUscita();
+            WaterDirection uscita = board[tileCorrenteIndex.x][tileCorrenteIndex.y].getdirezioneDiUscita();
             System.out.println("uscita"+uscita);
             //controllo se il tile verso la direzione di uscita è allineato
             Point difronte = new Point();
 
-            difronte = this.tileDiFronte(tileCorrentePoint, uscita);
+            difronte = this.tileDiFronte(tileCorrenteIndex, uscita);
             System.out.println("difronte: "+difronte);
             if (difronte != null) {
                 if (difronte.x >= 0 & difronte.x < COLONNE & difronte.y >= 0 & difronte.y < RIGHE) {
@@ -423,9 +428,9 @@ public class Board implements ActionListener{
 
                     System.out.println("entrata "+entrataDisponibile);
                     if (entrataDisponibile != null) {
-                        tileCorrentePoint = difronte;
-                        board[tileCorrentePoint.x][tileCorrentePoint.y].aggiungiAttraversamento(entrataDisponibile);
-                        punteggioUltimaTileAttraversata = board[tileCorrentePoint.x][tileCorrentePoint.y].getPunteggio();
+                        tileCorrenteIndex = difronte;
+                        board[tileCorrenteIndex.x][tileCorrenteIndex.y].aggiungiAttraversamento(entrataDisponibile);
+                        punteggioUltimaTileAttraversata = board[tileCorrenteIndex.x][tileCorrenteIndex.y].getPunteggio();
                         return true;
                     } else {
                         stopTimerCasella();

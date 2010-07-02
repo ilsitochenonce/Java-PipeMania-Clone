@@ -1,0 +1,19 @@
+class ColoredJTable
+!!!170626.java!!!	getCellRenderer(in row : int, in column : int) : TableCellRenderer
+        return renderer;
+!!!170754.java!!!	ColoredJTable(inout tm : TableModel, inout rowColors : Color)
+        super(tm);
+        this.rowColors = rowColors;
+        this.renderer = new CenterTableCellRenderer();
+!!!170882.java!!!	prepareRenderer(inout renderer : TableCellRenderer, in row : int, in column : int) : Component
+        Component rendererComponent = super.prepareRenderer(renderer, row, column);
+
+        if (!isCellSelected(row, column)) {
+            // If the cell is NOT selected, then calculates the index
+            // in the color array and sets the background.
+            int index = row % rowColors.length;
+
+            rendererComponent.setBackground(rowColors[index]);
+        }
+
+        return rendererComponent;
